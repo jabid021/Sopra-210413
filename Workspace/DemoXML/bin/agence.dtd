@@ -1,0 +1,19 @@
+<!ELEMENT agence (vol+)>
+<!ELEMENT vol (compagnie,depart,arrivee,escales)>
+<!ELEMENT compagnie (#PCDATA)>
+<!ELEMENT depart (#PCDATA)>
+<!ELEMENT arrivee (#PCDATA)>
+<!ELEMENT escales (escale*)>
+<!ELEMENT escale (#PCDATA)>
+
+
+
+<!ATTLIST vol numero CDATA #REQUIRED>
+<!ATTLIST vol statut (ouvert|ferme) #REQUIRED>
+<!ATTLIST depart heure CDATA #REQUIRED>
+<!ATTLIST depart jour CDATA #REQUIRED>
+<!ATTLIST arrivee heure CDATA #REQUIRED>
+<!ATTLIST arrivee jour CDATA #REQUIRED>
+<!ATTLIST escale heure CDATA #REQUIRED>
+<!ATTLIST escale jour CDATA #REQUIRED>
+<!ATTLIST escale duree CDATA #REQUIRED>

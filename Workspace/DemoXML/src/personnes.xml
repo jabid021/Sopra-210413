@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+
+<!--  Personne : id*, nom*, prenom*, age*, genre*,
+
+ adresse (rue,voie,cp,ville), tels (pro / perso) mails* (pro/perso) -->
+ 
+<!-- Balise Racine -->
+
+<!--<!DOCTYPE personnes SYSTEM  "personnes.dtd">-->
+
+
+
+
+
+
+
+
+<personnes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="personnes.xsd">
+
+
+<personne id="p12" genre="homme">
+	<nom>Abid</nom>
+	<prenom>Jordan</prenom>	
+	<age>28</age>
+	<adresse>
+		<numero>6</numero>
+		<voie>Rue rougemont</voie>
+		<ville cp="75009">Paris</ville>
+	</adresse>
+	<tels>
+		<tel type="pro">06789944788</tel>
+		<tel type="perso">067114224</tel>
+	</tels>
+	<mails>
+		<mail type="perso">jordanabid@gmail.com</mail>
+		<mail type="pro">j.abid@ajc-ingenierie.fr</mail>
+	</mails>
+</personne>
+
+
+
+<personne  genre="homme" id="p14">
+	<nom>Abid</nom>
+	<prenom>Jordan</prenom>	
+	<age>28</age>
+	<adresse>
+		<numero>6</numero>
+		<voie>Rue rougemont</voie>
+		<ville cp="75009">Paris</ville>
+	</adresse>
+	<mails/>
+</personne>
+
+<personne id = "p34" genre="femme">
+<nom>Florentin</nom>
+<prenom>Axelle</prenom>
+<age>27</age>
+<adresse>
+    <numero>47</numero>
+    <voie>rue de la boulais</voie>
+    <ville cp="35000">Rennes</ville>
+</adresse>
+
+<mails>
+    <mail type="pro">florentin.axelle@gmail.com</mail>
+</mails>
+</personne>
+
+
+
+
+</personnes>

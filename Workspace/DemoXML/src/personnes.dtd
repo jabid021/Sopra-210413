@@ -1,0 +1,48 @@
+<!--Balises : 
+personnes, personne, nom, prenom, age, adresse,
+numero,voie, ville, tels, tel,mails,mail
+
+
+Attributs : id, genre,type(tel),cp,type(mail)
+
+0-1 => ?
+1-1 => vide 
+0-* => *
+1-* => + 
+-->
+
+
+<!ELEMENT personnes (personne+)>
+	
+	
+<!ELEMENT personne (nom,prenom,age,adresse,tels?,mails)>
+	<!ATTLIST personne id ID #REQUIRED>
+	<!ATTLIST personne genre (homme|femme|nb) #REQUIRED>
+	
+	
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT adresse (numero?,voie?,ville?)>
+<!ELEMENT numero (#PCDATA)>
+<!ELEMENT voie (#PCDATA)>
+<!ELEMENT ville (#PCDATA)>
+<!ELEMENT tels (tel+)>
+<!ELEMENT tel (#PCDATA)>
+<!ELEMENT mails (mail*)>
+<!ELEMENT mail (#PCDATA)>
+
+
+
+
+<!ATTLIST ville cp CDATA #REQUIRED>
+<!ATTLIST tel type (pro|perso) #REQUIRED>
+<!ATTLIST mail type (pro|perso) #REQUIRED>
+
+
+
+
+
+
+
+

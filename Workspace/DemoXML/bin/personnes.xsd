@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+
+
+
+
+<!-- 
+Elements Basiques / Simples :   attributs + balises PCDATA uniquement (PAS d'ATTRIBUTS : 
+
+Balises : 
+				nom, prenom, age,numero,voie
+
+
+				Attributs : id, genre,type(tel),cp,type(mail)
+
+
+___________________________________________
+
+Elements Complexes : Le reste (balise qui contient des balises ou des attributs)
+
+Balises : 
+personnes8, personne7, adresse6, ville(1), tels5, tel2,mails4,mail3
+
+ -->
+ <xsd:simpleType name="typeUse">
+ 	<xsd:restriction base="xsd:string"> 
+ 		<xsd:enumeration value="pro"/>
+ 		<xsd:enumeration value="perso"/>
+ 	</xsd:restriction>
+ </xsd:simpleType>
+ 
+  <xsd:simpleType name="civ">
+ 	<xsd:restriction base="xsd:string"> 
+ 		<xsd:enumeration value="homme"/>
+ 		<xsd:enumeration value="femme"/>
+ 		<xsd:enumeration value="nb"/>
+ 	</xsd:restriction>
+ </xsd:simpleType>
+ 
+ 
+ <xsd:attribute name="id" type="xsd:ID"/>
+ <xsd:attribute name="genre" type="civ"/>
+ <xsd:attribute name="type" type="typeUse"/>
+ <xsd:attribute name="cp" type="xsd:string"/>
+ 
+ 
+ <xsd:element name="nom" type="xsd:string"/>
+ <xsd:element name="prenom" type="xsd:string"/>
+ <xsd:element name="age" type="xsd:positiveInteger"/>
+ <xsd:element name="numero" type="xsd:string"/>
+ <xsd:element name="voie" type="xsd:string"/>
+ 
+
+	
+ <xsd:element name="ville">
+ 	<xsd:complexType mixed="true">
+ 		<xsd:attribute ref="cp"/>
+ 	</xsd:complexType>
+ 	 </xsd:element>
+ 	
+ 	
+ 	<xsd:element name="tel">
+ 	<xsd:complexType mixed="true">
+ 		<xsd:attribute ref="type"/>
+ 	</xsd:complexType>
+ </xsd:element>
+ 
+ 
+  	<xsd:element name="mail">
+ 	<xsd:complexType mixed="true">
+ 		<xsd:attribute ref="type"/>
+ 	</xsd:complexType>
+ </xsd:element>
+ 
+ 
+ 
+  	<xsd:element name="tels">
+ 		<xsd:complexType>
+ 		<xsd:sequence>
+ 			<xsd:element ref="tel" maxOccurs="unbounded"/>
+ 		</xsd:sequence>
+ 		</xsd:complexType>
+ </xsd:element>
+ 
+ 
+ <xsd:element name="mails">
+ 		<xsd:complexType>
+ 		<xsd:sequence>
+ 			<xsd:element ref="mail" minOccurs="0" maxOccurs="unbounded"/>
+ 		</xsd:sequence>
+ 		</xsd:complexType>
+ </xsd:element>
+ 
+ 
+ <xsd:element name="adresse">
+ 		<xsd:complexType>
+ 		<xsd:all>
+ 			<xsd:element ref="numero" minOccurs="0"/>
+ 			<xsd:element ref="voie" minOccurs="0"/>
+ 			<xsd:element ref="ville" minOccurs="0"/>
+ 		</xsd:all>
+ 		</xsd:complexType>
+ </xsd:element>
+ 
+ 
+ 
+  <xsd:element name="personne">
+ 		<xsd:complexType mixed="true">
+ 		<xsd:sequence>
+ 			<xsd:element ref="nom"/>
+ 			<xsd:element ref="prenom"/>
+ 			<xsd:element ref="age"/>
+ 			<xsd:element ref="adresse"/>
+ 			<xsd:element ref="tels" minOccurs="0"/>
+ 			<xsd:element ref="mails"/>
+ 		</xsd:sequence>
+ 		<xsd:attribute ref="id"/>
+ 		<xsd:attribute ref="genre"/>
+ 		</xsd:complexType>
+ </xsd:element>
+ 
+ 
+ 
+ 
+ <xsd:element name="personnes">
+ 		<xsd:complexType>
+ 		<xsd:sequence>
+ 			<xsd:element ref="personne" maxOccurs="unbounded"/>
+ 		</xsd:sequence>
+ 		</xsd:complexType>
+ </xsd:element>
+ 
+ 
+
+</xsd:schema>

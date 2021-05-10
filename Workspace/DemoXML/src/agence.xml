@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE agence SYSTEM "agence.dtd">
+
+
+<agence>
+
+
+	<vol numero="AF7362" statut="ouvert">
+		<compagnie>Air France</compagnie>
+		<depart heure="10:05" jour="2018-10-08">Lille</depart>
+		<arrivee heure="11:50" jour="2018-10-08">Nice</arrivee>
+
+		<escales />
+	</vol>
+
+
+	<vol numero="TK737-800" statut="ouvert">
+		<compagnie>Turkish Airlines</compagnie>
+		<depart heure="12:05" jour="2018-10-11">Paris</depart>
+		<arrivee heure="20:40" jour="2018-10-11">Ankara</arrivee>
+
+		<escales>
+			<escale heure="14:10" jour="2018-10-11" duree="01:10">Rome</escale>
+		</escales>
+	</vol>
+
+
+	<vol numero="LH2223" statut="ferme">
+		<compagnie>Lufthansa</compagnie>
+		<depart heure="08:05" jour="2018-09-13">Toulouse</depart>
+		<arrivee heure="02:45" jour="2018-9-14">Tokyo</arrivee>
+		<escales>
+			<escale heure="08:55" jour="2018-09-13" duree="00:25">Munich</escale>
+			<escale heure="20:30" jour="2018-09-13" duree="01:10">Hong Kong</escale>
+		</escales>
+	</vol>
+
+</agence>
