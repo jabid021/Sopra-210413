@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,16 +8,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.IDAOEmploye;
 import metier.Departement;
 import metier.Employe;
 
-public class DAOEmploye implements IDAO<Employe, Integer> {
+public class DAOEmployeJDBC implements IDAOEmploye{
 
 	@Override
 	public List<Employe> findAll() {
 
 		List<Employe> employes=new ArrayList();
-		DAODepartement daoD = new DAODepartement();
+		DAODepartementJDBC daoD = new DAODepartementJDBC();
 
 		Employe e = null;
 		try
@@ -51,7 +52,7 @@ public class DAOEmploye implements IDAO<Employe, Integer> {
 	@Override
 	public Employe findById(Integer id) {
 
-		DAODepartement daoD = new DAODepartement();
+		DAODepartementJDBC daoD = new DAODepartementJDBC();
 
 		Employe e = null;
 		try
@@ -159,5 +160,14 @@ public class DAOEmploye implements IDAO<Employe, Integer> {
 		}
 
 	}
+	
 
+	@Override
+	public List<Employe> findByIdDepartement(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
 }

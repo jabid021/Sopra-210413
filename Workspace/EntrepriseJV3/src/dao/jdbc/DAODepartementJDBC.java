@@ -1,4 +1,4 @@
-package dao;
+package dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.IDAODepartement;
 import metier.Departement;
 
-public class DAODepartement implements IDAO<Departement, Integer> {
+public class DAODepartementJDBC implements IDAODepartement{
 
 	@Override
 	public List<Departement> findAll() {

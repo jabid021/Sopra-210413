@@ -11,17 +11,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
-import dao.DAODepartement;
-import dao.DAOEmploye;
+import dao.IDAODepartement;
+import dao.IDAOEmploye;
 import metier.Compte;
 import metier.Departement;
 import metier.Employe;
+import util.Context;
 
 public class Test {
 	
 	
-	static DAODepartement daoDept = new DAODepartement();
-	static DAOEmploye daoEmp = new DAOEmploye();
+	static IDAODepartement daoDept = Context.getInstance().getDaoDept();
+	static IDAOEmploye daoEmp = Context.getInstance().getDaoEmp();
 	
 	
 	public static void ecrireFichier(String chemin,String message) 
