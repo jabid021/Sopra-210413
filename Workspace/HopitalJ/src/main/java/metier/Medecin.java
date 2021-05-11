@@ -3,10 +3,16 @@ package metier;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("medecin")
 public class Medecin extends Compte {
 
-	private int salle;
-	private List<Visite> visites=new ArrayList();
+	//Une col transient n'est pas ajoutée en base 
+	private transient int salle;
+	//private List<Visite> visites=new ArrayList();
 
 	public Medecin() {
 	}
@@ -25,19 +31,19 @@ public class Medecin extends Compte {
 	
 	
 
-	public List<Visite> getVisites() {
+	/*public List<Visite> getVisites() {
 		return visites;
 	}
-
-	public void setVisites(List<Visite> visites) {
+*/
+	/*public void setVisites(List<Visite> visites) {
 		this.visites = visites;
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "Medecin [salle=" + salle + ", visites=" + visites + ", id=" + id + ", login=" + login + ", password="
 				+ password + "]";
-	}
+	}*/
 
 	
 	

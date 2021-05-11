@@ -2,13 +2,31 @@ package metier;
 
 import java.io.Serializable;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//Obligatoire
+@Entity
 public class Patient implements Serializable {
 
+	//Obligatoire
+	@Id
 	
+	//Opt
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom,prenom,tel;
+	
+	@Embedded
 	private Adresse adresse;
 	
+	//Obligatoire
+	public Patient() {
+		
+	} 
 	
 	public Patient(int secu, String nom, String prenom) {
 		this.id = secu;
