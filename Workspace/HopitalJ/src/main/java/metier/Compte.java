@@ -1,7 +1,12 @@
 package metier;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public abstract class Compte {
 
+	@Id
 	protected int id;
 	protected String login;
 	protected String password;
