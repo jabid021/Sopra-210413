@@ -1,17 +1,26 @@
 package metier;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Personne {
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name="typeDePersonne")
+public abstract class Personne {
 
 	@Id
-	private int id;
-	private String prenom;
-	private String nom;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected int id;
+	@Column(name="firstname", length = 20)
+	protected String prenom;
+	@Column(name="lastname", length = 30)
+	protected String nom;
 	
 	public Personne() {
+	}
+
+	public Personne(String prenom, String nom) {
+		this.prenom = prenom;
+		this.nom = nom;
 	}
 
 	public int getId() {
