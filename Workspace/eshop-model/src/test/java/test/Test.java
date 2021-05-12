@@ -27,23 +27,79 @@ public class Test {
 		achats.add(p2);
 		
 		c1.setAchats(achats);
-		
-		
+		//////////
+		/*Un object est soit : 
+		 * - Transient / New / detached
+		 * - Managed par JPA
+		 * 
+		 * Actions sur les objets : 
+		 * 
+		 *  persist(p) => p devient managed
+		 *  Personne p = em.find(Personne.class,1) => p devient managed
+		 *  
+		*/
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("eshopModel");
 		EntityManager em = emf.createEntityManager();
 		
-		
+		/////
 		em.getTransaction().begin();
-	
+		
+		
+		//Insert
 		em.persist(c1);
+		c1.setAge(15);
+		c1.setPrenom("TOTO");
 		
 		em.getTransaction().commit();
 		
 		
-		System.out.println(em.find(Client.class, 1));
+		
+		//SelectById
+		//Client client=em.find(Client.class, 1);
+		
+		
+		
+		em.getTransaction().begin();
+		
+		//Update
+		Client client = new Client("Doe", "John", 40, LocalDate.parse("1993-05-01"), new Adresse(6,"Rue rougemont","75009","Paris"));
+		client.setId(1);
+		Client clientManaged=em.merge(client);
+		
+		em.remove(clientManaged);
+		
+		
+		
+		
+		em.getTransaction().commit();
+		
 		
 		em.close();
 		emf.close();
 	}
 
+	
+public void remove(Client c) 
+{
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("eshopModel");
+	EntityManager em = emf.createEntityManager();
+	
+	c=em.find(Client.class,c.getId());
+	em.remove(c);
+	
+	//Soit : 
+	
+	/*
+	 * 
+	 * 
+	c=em.merge(c);
+	em.remove(c);
+	 * 
+	 * */
+	 */
+	
+	em.close();
+	emf.close();
 }
+}
+
