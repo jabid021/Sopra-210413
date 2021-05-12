@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -23,7 +24,7 @@ public class Client extends Personne {
 	@Embedded
 	private Adresse addresse;
 	
-	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@ManyToMany(cascade = {CascadeType.MERGE,CascadeType.REMOVE})
 	@JoinTable(name="achats",joinColumns = @JoinColumn(name="idClient"),inverseJoinColumns = @JoinColumn(name="idProduit"))
 	private List<Produit> achats;
 	

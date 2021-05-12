@@ -5,53 +5,53 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import metier.Client;
-import metier.Produit;
+import metier.Fournisseur;
+import metier.Personne;
 import util.Context;
 
-public class DAOProduit implements IDAO<Produit,Integer>{
+public class DAOFournisseur implements IDAO<Fournisseur,Integer>{
 
 	@Override
-	public Produit findById(int id) {
+	public Fournisseur findById(int id) {
 		EntityManager em = Context.get_instance().getEmf().createEntityManager();
-		
-		Produit produit = em.find(Produit.class, id);
-		
+
+		Fournisseur fournisseur = em.find(Fournisseur.class, id);
+
 		em.close();
-		return produit;
+		return fournisseur;
 	}
 
 	@Override
-	public List<Produit> findAll() {
+	public List<Fournisseur> findAll() {
 		EntityManager em = Context.get_instance().getEmf().createEntityManager();
-		
-		Query myQuery = em.createQuery("SELECT p from Produit p",Produit.class);
-		List<Produit> produits=myQuery.getResultList();
+
+		Query myQuery = em.createQuery("SELECT f from Fournisseur f",Fournisseur.class);
+		List<Fournisseur> fournisseurs=myQuery.getResultList();
 		em.close();
-		return produits;
+		return fournisseurs;
 	}
 
 	@Override
-	public Produit save(Produit produit) {
+	public Fournisseur save(Fournisseur fournisseur) {
 		EntityManager em = Context.get_instance().getEmf().createEntityManager();
-		
+
 		em.getTransaction().begin();
-		produit = em.merge(produit);
+		fournisseur = em.merge(fournisseur);
 		em.getTransaction().commit();
-		
+
 		em.close();
-		return produit;
+		return fournisseur;
 	}
 
 	@Override
-	public void delete(Produit produit) {
+	public void delete(Fournisseur fournisseur) {
 		EntityManager em = Context.get_instance().getEmf().createEntityManager();
-		
+
 		em.getTransaction().begin();
-		produit = em.merge(produit);
-		em.remove(produit);
+		fournisseur = em.merge(fournisseur);
+		em.remove(fournisseur);
 		em.getTransaction().commit();
-		
+
 		em.close();
 	}
 

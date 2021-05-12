@@ -20,7 +20,7 @@ public class Produit {
 	private String libelle;
 	private double prix;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="idFournisseur")
 	private Fournisseur fournisseur;
 	

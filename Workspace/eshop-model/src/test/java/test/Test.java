@@ -12,6 +12,7 @@ import metier.Adresse;
 import metier.Client;
 import metier.Fournisseur;
 import metier.Produit;
+import util.Context;
 
 public class Test {
 
@@ -38,68 +39,32 @@ public class Test {
 		 *  Personne p = em.find(Personne.class,1) => p devient managed
 		 *  
 		*/
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("eshopModel");
-		EntityManager em = emf.createEntityManager();
-		
-		/////
-		em.getTransaction().begin();
+		//Context.get_instance().getDaoC().save(c1);
 		
 		
-		//Insert
-		em.persist(c1);
-		c1.setAge(15);
-		c1.setPrenom("TOTO");
+		//Retourne un Client + ses achats
+		System.out.println(Context.get_instance().getDaoC().findWithAchats(1));
 		
-		em.getTransaction().commit();
+		List<Client> maListe=new ArrayList();
+		for(Client c : Context.get_instance().getDaoC().findAll())
+		{
+			
+			maListe.add(Context.get_instance().getDaoC().findWithAchats(c.getId()));
+		}
 		
+		System.out.println(maListe);
 		
+		//Retourner tous les clients avec leurs achats
+		/*for(Client c : Context.get_instance().getDaoC().findAllWithAchats()) 
+		{
+			System.out.println(c);
+		}*/
 		
-		//SelectById
-		//Client client=em.find(Client.class, 1);
-		
-		
-		
-		em.getTransaction().begin();
-		
-		//Update
-		Client client = new Client("Doe", "John", 40, LocalDate.parse("1993-05-01"), new Adresse(6,"Rue rougemont","75009","Paris"));
-		client.setId(1);
-		Client clientManaged=em.merge(client);
-		
-		em.remove(clientManaged);
-		
-		
-		
-		
-		em.getTransaction().commit();
-		
-		
-		em.close();
-		emf.close();
+		//Retourne une personne avec ce nom + ce prenom
+		System.out.println(Context.get_instance().getDaoPe().findByNomAndPrenom("Formation", "AJC").getId());
+		Context.get_instance().getEmf().close();
 	}
 
 	
-public void remove(Client c) 
-{
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("eshopModel");
-	EntityManager em = emf.createEntityManager();
-	
-	c=em.find(Client.class,c.getId());
-	em.remove(c);
-	
-	//Soit : 
-	
-	/*
-	 * 
-	 * 
-	c=em.merge(c);
-	em.remove(c);
-	 * 
-	 * */
-	 */
-	
-	em.close();
-	emf.close();
-}
 }
 
