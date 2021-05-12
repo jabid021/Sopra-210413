@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("secretaire")//opt
+//@DiscriminatorValue("secretaire")//opt
 public class Secretaire extends Compte{
 
 	private String ancien;

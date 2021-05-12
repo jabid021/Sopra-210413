@@ -1,12 +1,16 @@
 package metier;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 //Obligatoire
 @Entity
@@ -22,6 +26,15 @@ public class Patient implements Serializable {
 	
 	@Embedded
 	private Adresse adresse;
+	
+	@ManyToMany
+	@JoinTable(
+			name="maladies",
+			joinColumns = @JoinColumn(name="idPatient"),
+			inverseJoinColumns = @JoinColumn(name="idSymptome")
+			)
+	private List<Symptome> maladies;
+	
 	
 	//Obligatoire
 	public Patient() {
@@ -93,6 +106,15 @@ public class Patient implements Serializable {
 		this.adresse = adresse;
 	}
 
+
+	
+	public List<Symptome> getMaladies() {
+		return maladies;
+	}
+
+	public void setMaladies(List<Symptome> maladies) {
+		this.maladies = maladies;
+	}
 
 	@Override
 	public String toString() {

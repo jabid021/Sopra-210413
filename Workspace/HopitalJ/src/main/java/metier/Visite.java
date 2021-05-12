@@ -2,15 +2,34 @@ package metier;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+@Entity
 public class Visite {
 
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
 	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name="idPatient")
 	private Patient patient;
+	@ManyToOne
+	@JoinColumn(name="idMedecin")
 	private Medecin medecin;
+	
+	
 	private double prix=20;
 	private LocalDate date;
 	private int salle;
 	
+	
+	public Visite() {
+	}
 	
 	public Visite(int id, Patient patient, Medecin medecin, double prix, String date, int salle) {
 		this.id = id;

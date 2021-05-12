@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Entity//Obligatoire
 @Table(name="account")//Opt
 
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="typeCompte")//Opt
+@Inheritance(strategy = InheritanceType.JOINED)
+//@DiscriminatorColumn(name="typeCompte")//Opt
 public abstract class Compte {
 
 	
