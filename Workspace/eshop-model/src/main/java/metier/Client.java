@@ -1,11 +1,15 @@
 package metier;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -18,6 +22,11 @@ public class Client extends Personne {
 	private LocalDate dateNaissance;
 	@Embedded
 	private Adresse addresse;
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+	@JoinTable(name="achats",joinColumns = @JoinColumn(name="idClient"),inverseJoinColumns = @JoinColumn(name="idProduit"))
+	private List<Produit> achats;
+	
 	
 	public Client() {
 	}
@@ -52,6 +61,22 @@ public class Client extends Personne {
 	public void setAddresse(Adresse addresse) {
 		this.addresse = addresse;
 	}
+
+	public List<Produit> getAchats() {
+		return achats;
+	}
+
+	public void setAchats(List<Produit> achats) {
+		this.achats = achats;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [age=" + age + ", dateNaissance=" + dateNaissance + ", addresse=" + addresse + ", achats="
+				+ achats + ", id=" + id + ", prenom=" + prenom + ", nom=" + nom + "]";
+	}
+
+	
 
 	
 	
