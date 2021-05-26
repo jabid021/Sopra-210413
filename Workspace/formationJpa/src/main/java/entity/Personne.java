@@ -17,6 +17,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 //@Table(name = "person")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -31,6 +33,7 @@ public abstract class Personne {
     @Column(name = "last_name", length = 150)
     private String nom;
     @Lob
+    @Type(type="org.hibernate.type.TextType")
     @Column(name = "comment")
     private String commentaire;
     @Lob

@@ -52,7 +52,7 @@ public class App {
 	daoLigneCommande.insert(lc);
 
 	daoProduit.delete(produit);
-
+	
     }
 
 }

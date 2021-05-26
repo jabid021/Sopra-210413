@@ -11,7 +11,7 @@
 			<property name="hibernate.connection.driver"
 				value="org.postgresql.Driver" />
 			<property name="hibernate.connection.url"
-				value="jdbc:postgresql://127.0.0.1/cgi" />
+				value="jdbc:postgresql://127.0.0.1/eshop" />
 			<property name="hibernate.connection.user" value="postgres" />
 			<property name="hibernate.connection.password"
 				value="postgres" />
