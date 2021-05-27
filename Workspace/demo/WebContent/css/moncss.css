@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+body {
+	background-color: grey;
+}
+
+header {
+	background-color: blue;
+}
+
+nav {
+	background: green;
+}
+
+section {
+	background: darkviolet;
+}
+
+aside {
+	background: greenyellow;
+}
+
+footer {
+	background: silver;
+	color: green;
+}
+
+section header {
+	background: red;
+}
+
+section article {
+	background: pink;
+}
+
+section footer {
+	background: orange;
+}
+
+aside div {
+	background: yellow;
+}
+
+#article2 {
+	background: maroon;
+}
+
+div.info {
+	background: white;
+}
+
+a {
+	color: yellow;
+}
+
+a:hover {
+	color: green;
+}
