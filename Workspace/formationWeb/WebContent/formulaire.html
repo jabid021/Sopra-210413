@@ -6,10 +6,14 @@
 </head>
 <body>
 	<form method="post" action="">
-		<input type="hidden" name="cache" value="valeur cachee"> <label>
+		<input type="hidden" name="cache" value="valeur cachee"> 
+		<label>
 			prenom: <input type="text" name="prenom" value="olivier">
-		</label> <br> <label for="nom">nom:</label> <input name="nom" id="nom"
-			placeholder="saisir votre nom"><br> <label>
+		</label> <br>
+		 <label for="idnom">nom:</label> 
+		 <input name="nom" id="idnom"
+			placeholder="saisir votre nom" required="required"><br> 
+		<label>
 			email: <input type="email" name="email">
 		</label><br> <label> date de naissance: <input type="date"
 			name="dtNaiss"> <label> age: <input type="number"
@@ -29,13 +33,13 @@
 			<option value="red">rouge</option>
 			<option value="yellow">jaune</option>
 			<option value="blue">bleu</option>
-		</select> <br>
-		<select name="couleur2" size="3" multiple="multiple">
+		</select> <br> <select name="couleur2" size="3" multiple="multiple">
 			<option value="red">rouge</option>
 			<option value="yellow">jaune</option>
 			<option value="blue">bleu</option>
-		</select> <br>
+		</select> <br> <input type="file" name="fichier"><br>
 		<button type="submit">envoyer</button>
+		<button >bouton</button>
 	</form>
 </body>
 </html>
