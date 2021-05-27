@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<form class="row row-cols-lg-auto g-3 align-items-center">
+			<div class="form-row">
+				<input id="email" name="email" type="email" class="form-control"
+					placeholder="saisir votre mail">
+			</div>
+			<div class="col-12">
+				<input id="password" name="password" type="password"
+					class="form-control" placeholder="votre mot de passe">
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-outline-primary">submit</button>
+			</div>
+		</form>
+		<div class="row">
+			<div class="col-12"></div>
+			<div class="offset-3 col-6">
+				<h1>formulaire</h1>
+				<form method="post" action="">
+					<div class="form-group">
+						<label for="prenom"><small class="text-muted">prenom:</small></label>
+						<input name="prenom" id="prenom" placeholder="saisir votre prenom"
+							class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="nom">nom:</label> <input name="nom" id="nom"
+							placeholder="saisir votre nom" class="form-control">
+					</div>
+					<div class="form-group form-check">
+						<label class="form-check-label"> <input type="checkbox"
+							name="coche" value="ok" class="form-check-input">à cocher
+						</label>
+					</div>
+					<div class="form-group form-check-inline">
+						<label class="form-check-label"> <input type="radio"
+							name="sexe" value="homme" class="form-check-input">homme
+						</label> <label class="form-check-label"> <input type="radio"
+							name="sexe" value="femme" class="form-check-input">femme
+						</label>
+					</div>
+					<div class="form-group">
+						<select name="couleur" class="form-control">
+							<option value="red">rouge</option>
+							<option value="yellow">jaune</option>
+							<option value="blue">bleu</option>
+						</select>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-outline-primary">submit</button>
+						<button type="reset" class="btn btn-outline-warning">reset</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
