@@ -49,3 +49,49 @@ function stop() {
 	clearTimeout(timer);
 }
 
+var diapo=['90001','90003','90008','90013'];
+var index=0;
+
+function changeImg(){
+	stopLoadImage();
+	document.querySelector('#diapo').src='./images/'+diapo[index]+'.jpg';
+	startLoadImage();
+}
+
+function previous(){
+	if(index==0){
+		index=diapo.length-1;	
+	}else{
+		index--;
+	}
+	changeImg();
+}
+
+function next(){
+	index++;
+	if(index==diapo.length){
+		index=0;
+	}
+	changeImg();
+}
+
+function first(){
+	index=0;
+	changeImg();
+}
+
+function last(){
+	index=diapo.length-1;
+	changeImg();
+}
+
+var timerImage;
+
+function startLoadImage(){
+	timerImage=setInterval(previous,3000);
+}
+
+function stopLoadImage(){
+	clearInterval(timerImage);
+}
+
