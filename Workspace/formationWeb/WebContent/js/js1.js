@@ -31,7 +31,21 @@ function loadImg() {
 	if (select.value == 4) {
 		document.querySelector('#titre').innerHTML = 'Aire du parallelogramme';
 	} else {
-		document.querySelector('#titre').innerHTML = 'Aire du ' + images[select.value];
+		document.querySelector('#titre').innerHTML  = 'Aire du ' + images[select.value];
 	}
+}
+
+function affichageConsole() {
+	console.log('on affiche un truc');
+}
+var timer;
+function timeout() {
+	//timer = setInterval(affichageConsole, 2000);
+	timer = setTimeout(affichageConsole, 5000);
+}
+
+function stop() {
+	//clearInterval(timer);
+	clearTimeout(timer);
 }
 
