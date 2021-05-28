@@ -12,7 +12,7 @@ function checkName() {
 }
 
 function checkEmail() {
-	let exp = /^[a-z][a-z0-9]+(\.?[a-z][a-z0-9]+){0,}@[a-z][a-z0-9]{2,}(\.[a-z]{2,}){1,}$/
+	let exp = /^[a-zA-Z0-9]+([\.-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]{2,}([\.-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,4}$/
 	let input = document.querySelector('#email');
 	status[1] = checkInput(input, exp.test(input.value.toLowerCase()));
 	submitStatus();
@@ -51,7 +51,6 @@ function submitStatus() {
 	let i = 0;
 	let unlock = false;
 	console.log(status);
-	
 	for (let e of status) {
 		unlock = e;
 		if (unlock == false) {
