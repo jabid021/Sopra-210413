@@ -3,10 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./css/formulaire.css">
 <script type="text/javascript" src="./js/regexp.js"></script>
 </head>
 <body>
-	<input id="input">
-	<button onclick="check()">tester</button>
+	<form>
+		<input id="telephone" class="default" onkeyup="aa()">
+		<!-- 00 00 00 00 00 -->
+		<!-- 0000000000 -->
+		<!-- +33 0 00 00 00 00 -->
+		<!--  +33000000000 -->
+		<button type="submit" id="submit" disabled="disabled">tester</button>
+	</form>
 </body>
 </html>
