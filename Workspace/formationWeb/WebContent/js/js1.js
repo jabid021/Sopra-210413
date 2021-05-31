@@ -8,6 +8,22 @@
 //	document.write(i+'<br>');
 //}
 
+//json
+var unObjet = {
+	prenom: 'olivier',
+	nom: 'gozlan',
+	age: 222,
+	sePresenter: function() {
+		console.log(this.prenom+' '+this.nom);
+	}
+};
+
+console.log(unObjet.sePresenter());
+console.log(unObjet);
+unObjet.adresse='chez moi';
+console.log(unObjet);
+
+
 function maFonction() {
 	console.log('la fonction');
 	2 == '2'
@@ -31,7 +47,7 @@ function loadImg() {
 	if (select.value == 4) {
 		document.querySelector('#titre').innerHTML = 'Aire du parallelogramme';
 	} else {
-		document.querySelector('#titre').innerHTML  = 'Aire du ' + images[select.value];
+		document.querySelector('#titre').innerHTML = 'Aire du ' + images[select.value];
 	}
 }
 
@@ -49,49 +65,49 @@ function stop() {
 	clearTimeout(timer);
 }
 
-var diapo=['90001','90003','90008','90013'];
-var index=0;
+var diapo = ['90001', '90003', '90008', '90013'];
+var index = 0;
 
-function changeImg(){
+function changeImg() {
 	stopLoadImage();
-	document.querySelector('#diapo').src='./images/'+diapo[index]+'.jpg';
+	document.querySelector('#diapo').src = './images/' + diapo[index] + '.jpg';
 	startLoadImage();
 }
 
-function previous(){
-	if(index==0){
-		index=diapo.length-1;	
-	}else{
+function previous() {
+	if (index == 0) {
+		index = diapo.length - 1;
+	} else {
 		index--;
 	}
 	changeImg();
 }
 
-function next(){
+function next() {
 	index++;
-	if(index==diapo.length){
-		index=0;
+	if (index == diapo.length) {
+		index = 0;
 	}
 	changeImg();
 }
 
-function first(){
-	index=0;
+function first() {
+	index = 0;
 	changeImg();
 }
 
-function last(){
-	index=diapo.length-1;
+function last() {
+	index = diapo.length - 1;
 	changeImg();
 }
 
 var timerImage;
 
-function startLoadImage(){
-	timerImage=setInterval(previous,3000);
+function startLoadImage() {
+	timerImage = setInterval(previous, 3000);
 }
 
-function stopLoadImage(){
+function stopLoadImage() {
 	clearInterval(timerImage);
 }
 
