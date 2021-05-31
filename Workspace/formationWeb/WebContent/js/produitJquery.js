@@ -2,6 +2,7 @@
  * 
  */
 
+let numero=0;
 
 function add() {
 	let produit = {
@@ -53,7 +54,6 @@ function modifTr(produit) {
 
 
 function createTr(p) {
-	console.log(p);
 	let tdId = $('<td/>').html(p.id);
 	let tdLibelle = $('<td/>').html(p.libelle);
 	let tdDescription = $('<td/>').html(function() {
@@ -65,14 +65,9 @@ function createTr(p) {
 		width: 50,
 		height:50 
 		});
-	//image.src = './images/' + p.photo + '.jpeg';
-	//image.width = 50;
-	//image.height = 50;
 	let editer = $('<button>editer</button>').addClass('btn btn-outline-info').click(function(event) {
 		showForm(p);
 	});
-	//editer.append = 'editer';
-	//showForm(p);
 	let tdEditer = $('<td/>').append(editer);
 	let supprimer = $('<button/>').html('supprimer').addClass('btn btn-outline-danger').click(function(event) {
 		tr = $('#tr' + p.id);
