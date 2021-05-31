@@ -33,6 +33,24 @@
 				</tbody>
 			</table>
 		</div>
+		<button class="btn btn-outline-primary" onclick="add()">ajouter
+			un produit</button>
+		<div id="divForm" style="width: 50%" class="d-none">
+			<div class="form-group">
+				<label for="inputId">id:</label> <input id="inputId"
+					class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="inputLibelle">libelle</label><input id="inputLibelle"
+					class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="inputDescription">description</label>
+				<textarea id="inputDescription" class="form-control"></textarea>
+			</div>
+			<button class="btn btn-outline-success" onclick="saveProduit()">ajouter</button>
+			<button class="btn btn-outline-warning" onclick="hideForm()">annuler</button>
+		</div>
 	</div>
 </body>
 </html>
