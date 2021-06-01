@@ -7,20 +7,31 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="java" class="formationSpring.xml.Formation"></bean>
+<!-- 	<bean id="java" class="formationSpring.xml.Formation"></bean> -->
 
-	<bean id="stagiaire" class="formationSpring.xml.Stagiaire">
-		<property name="prenom" value="olivier"></property>
-		<property name="formation" ref="java"></property>
-	</bean>
-	<bean id="s2" class="formationSpring.xml.Stagiaire">
-		<property name="formation" ref="java"></property>
-	</bean>
+<!-- 	<bean id="stagiaire" class="formationSpring.xml.Stagiaire"> -->
+<!-- 		<property name="prenom" value="olivier"></property> -->
+<!-- 		<property name="formation" ref="java"></property> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="s2" class="formationSpring.xml.Stagiaire"> -->
+<!-- 		<property name="formation" ref="java"></property> -->
+<!-- 	</bean> -->
 
-	<bean id="s3AvecSaFormationALui"
-		class="formationSpring.xml.Stagiaire">
-		<property name="formation">
-			<bean class="formationSpring.xml.Formation"></bean>
-		</property>
-	</bean>
+<!-- 	<bean id="s3AvecSaFormationALui" -->
+<!-- 		class="formationSpring.xml.Stagiaire"> -->
+<!-- 		<property name="formation"> -->
+<!-- 			<bean class="formationSpring.xml.Formation"></bean> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="guitare" class="formationSpring.xml.Guitare"></bean> -->
+<!-- 	<bean id="saxo" class="formationSpring.xml.Saxophone"></bean> -->
+
+<!-- 	<bean id="unMusicien" class="formationSpring.xml.Saxophoniste"> -->
+<!-- 		<property name="instrument" ref="saxo"></property> -->
+<!-- 	</bean> -->
+
+	<context:annotation-config></context:annotation-config>
+	<!-- active les annotations de spring -->
+	<context:component-scan base-package="formationSpring.annotation"></context:component-scan>
 </beans>
