@@ -2,7 +2,7 @@ package formationSpring.annotation;
 
 import org.springframework.stereotype.Component;
 
-@Component("fender")
+@Component("guitare")
 public class Guitare implements Instrument {
 	@Override
 	public String toString() {
