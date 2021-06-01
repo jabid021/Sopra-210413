@@ -26,6 +26,8 @@ public class App {
 	DaoProduit daoProduit = DaoProduitFactory.getInstance();
 	DaoPersonne daoPersonne = DaoPersonneFactory.getInstance();
 
+	
+	
 	Fournisseur frs = new Fournisseur("aaa", "ppp");
 
 	Produit produit = new Produit("tele", 500);
