@@ -1,20 +1,22 @@
 package formationSpring.aspect;
 
-import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import formationSpring.annotation.Guitariste;
 import formationSpring.annotation.Musicien;
+import formationSpring.annotation.Saxophoniste;
 
-//@Component
-//@Aspect
-public class Spectateur {
+@Component
+@Aspect
+public class Spectateur2 {
 
 	@Autowired
 	@Qualifier("saxophoniste")
@@ -22,27 +24,36 @@ public class Spectateur {
 
 	@Pointcut("execution(* formationSpring.annotation.Musicien.jouer())")
 	public void jouer() {
-
 	}
 
-	@Pointcut("execution(* formationSpring.annotation.Guitariste.jouer())")
-	public void jouerGuitariste() {
-
+	@Around("jouer()")
+	public void around(ProceedingJoinPoint pJP) throws Throwable {
+		if (pJP.getTarget() instanceof Guitariste) {
+			// guitariste
+			before();
+			try {
+				pJP.proceed();
+				((Guitariste) pJP.getTarget()).solo();
+			} finally {
+				saxophoniste.jouer();
+			}
+		} else if (pJP.getTarget() instanceof Saxophoniste) {
+			// saxophoniste
+			try {
+				pJP.proceed();
+			} finally {
+				fin();
+			}
+		}
 	}
 
-	@Pointcut("execution(* formationSpring.annotation.Saxophoniste.jouer())")
-	public void jouerSaxophoniste() {
-
-	}
-
-	@Before("jouerGuitariste()")
 	public void before() {
 		sintaller();
 		coupertelephone();
 	}
 
 	private void sintaller() {
-		System.out.println("les spectateurs s'installent");
+		System.out.println("les spectateursssssss s'installent");
 	}
 
 	private void coupertelephone() {
@@ -59,12 +70,6 @@ public class Spectateur {
 		System.out.println("bravo!!!!");
 	}
 
-	@After("jouerGuitariste()")
-	public void finGuitariste() {
-		saxophoniste.jouer();
-	}
-
-	@After("jouerSaxophoniste()")
 	public void fin() {
 		allumerTelephone();
 		partir();

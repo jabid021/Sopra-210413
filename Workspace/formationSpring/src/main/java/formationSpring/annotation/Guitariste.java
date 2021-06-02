@@ -32,8 +32,12 @@ public class Guitariste implements Musicien {
 
 	@Override
 	public void jouer() {
-		throw new IllegalArgumentException("fausse note");
-		// System.out.println("le guitariste joue de son instrument:" + instrument);
+		// throw new IllegalArgumentException("fausse note");
+		System.out.println("le guitariste joue de son instrument:" + instrument);
+	}
+
+	public void solo() {
+		System.out.println("un solo du gutariste");
 	}
 
 }

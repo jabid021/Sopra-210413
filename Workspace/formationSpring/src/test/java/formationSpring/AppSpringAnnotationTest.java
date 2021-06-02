@@ -11,8 +11,8 @@ import formationSpring.xml.Stagiaire;
 public class AppSpringAnnotationTest {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-		Musicien musicien = ctx.getBean(Musicien.class);
-		musicien.jouer();
+		Musicien gutariste = ctx.getBean("guitariste", Musicien.class);
+		gutariste.jouer();
 
 		ctx.close();
 	}
