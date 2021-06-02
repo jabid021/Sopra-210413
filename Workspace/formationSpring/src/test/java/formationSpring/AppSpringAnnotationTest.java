@@ -13,9 +13,7 @@ public class AppSpringAnnotationTest {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		Musicien musicien = ctx.getBean(Musicien.class);
 		musicien.jouer();
-		ctx.getBean("fender",Guitare.class);
-		System.out.println(ctx.getBean(Formation.class));
-		System.out.println(ctx.getBean(Stagiaire.class).getFormation());
+
 		ctx.close();
 	}
 }

@@ -13,14 +13,14 @@ public class Guitariste implements Musicien {
 	@Qualifier("guitare")
 	private Instrument instrument;
 
-	public Guitariste() {
-		System.out.println(instrument);
-	}
-
-	@PostConstruct
-	public void xxxx() {
-		System.out.println(instrument);
-	}
+//	public Guitariste() {
+//		System.out.println(instrument);
+//	}
+//
+//	@PostConstruct
+//	public void xxxx() {
+//		System.out.println(instrument);
+//	}
 
 	public Instrument getInstrument() {
 		return instrument;
@@ -32,7 +32,8 @@ public class Guitariste implements Musicien {
 
 	@Override
 	public void jouer() {
-		System.out.println("le guitariste joue de son instrument:" + instrument);
+		throw new IllegalArgumentException("fausse note");
+		// System.out.println("le guitariste joue de son instrument:" + instrument);
 	}
 
 }
