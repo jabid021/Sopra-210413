@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("exoJpaSpring.dao")
+@ComponentScan({ "exoJpaSpring.dao", "exoJpaSpring.services" })
 @PropertySource("classpath:config.properties")
 @EnableJpaRepositories(basePackages = "exoJpaSpring.repositories")
 public class AppConfig {

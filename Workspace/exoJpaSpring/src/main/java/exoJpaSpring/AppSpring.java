@@ -22,45 +22,77 @@ import exoJpaSpring.entity.Fournisseur;
 import exoJpaSpring.entity.LigneCommande;
 import exoJpaSpring.entity.LigneCommandeKey;
 import exoJpaSpring.entity.Produit;
+import exoJpaSpring.exceptions.ProduitException;
 import exoJpaSpring.repositories.FournisseurRepository;
 import exoJpaSpring.repositories.ProduitRepositry;
+import exoJpaSpring.services.ProduitService;
 
 public class AppSpring {
 
+//	@Autowired
+//	private ProduitRepositry produitRepository;
+//	@Autowired
+//	private FournisseurRepository fournisseurRepository;
+
 	@Autowired
-	private ProduitRepositry produitRepository;
-	@Autowired
-	private FournisseurRepository fournisseurRepository;
+	private ProduitService produitService;
 
 	public void run(String[] args) {
-		Produit produit = new Produit("p1", 100);
-		produit = produitRepository.save(produit);
+		Produit produit = new Produit();
 
-		System.out.println(produitRepository.findAll());
-		Optional<Produit> opt = produitRepository.findById(111111);
-		if (opt.isPresent()) {
-			System.out.println(opt.get());
-		} else {
-			System.out.println(opt);
+		try {
+			produitService.save(produit);
+		} catch (ProduitException e) {
+			e.printStackTrace();
 		}
 
-		Fournisseur frs = new Fournisseur("olivier", "gozlan");
-		frs = fournisseurRepository.save(frs);
-
-		produitRepository.saveAll(Arrays.asList(new Produit("tele", 500, frs), new Produit("telephone", 200),
-				new Produit("voitrue", 20000, frs)));
-
-		System.out.println(produitRepository.findByNom("tele"));
-		System.out.println(produitRepository.findByNomLike("tele%"));
-		System.out.println(produitRepository.findByNomContaining("tele"));
-		produitRepository.findByNomContainingAndPrixLessThan("te", 1000.0);
-		System.out.println(produitRepository.findByFournisseurIsNull());
-		System.out.println(produitRepository.findByFournisseurIsNotNull());
-		System.out.println("--------------");
-		Optional<Fournisseur> optFournisseur = fournisseurRepository.findByIdWithProduits(frs.getId());
-		if (optFournisseur.isPresent()) {
-			System.out.println(optFournisseur.get().getProduits());
+		try {
+			produitService.save(new Produit("aaa", 200));
+		} catch (ProduitException e) {
+			e.printStackTrace();
 		}
+		System.out.println(produitService.getAllProduits());
+
+		try {
+			System.out.println(produitService.getById(100));
+		} catch (ProduitException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//		produit = produitRepository.save(produit);
+//
+//		System.out.println(produitRepository.findAll());
+//		Optional<Produit> opt = produitRepository.findById(111111);
+//		if (opt.isPresent()) {
+//			System.out.println(opt.get());
+//		} else {
+//			System.out.println(opt);
+//		}
+//
+//		Fournisseur frs = new Fournisseur("olivier", "gozlan");
+//		frs = fournisseurRepository.save(frs);
+//
+//		produitRepository.saveAll(Arrays.asList(new Produit("tele", -500, frs), new Produit("telephone", 200),
+//				new Produit("voitrue", 20000, frs)));
+//
+//		System.out.println(produitRepository.findAll());
+//		produitRepository.setPrixSolde(0.5);
+//		System.out.println(produitRepository.findAll());
+//		produitRepository.deleteProduitSansFournisseur();
+//		System.out.println(produitRepository.findAll());
+
+//		System.out.println(produitRepository.findByNom("tele"));
+//		System.out.println(produitRepository.findByNomLike("tele%"));
+//		System.out.println(produitRepository.findByNomContaining("tele"));
+//		produitRepository.findByNomContainingAndPrixLessThan("te", 1000.0);
+//		System.out.println(produitRepository.findByFournisseurIsNull());
+//		System.out.println(produitRepository.findByFournisseurIsNotNull());
+//		System.out.println("--------------");
+//		Optional<Fournisseur> optFournisseur = fournisseurRepository.findByIdWithProduits(frs.getId());
+//		if (optFournisseur.isPresent()) {
+//			System.out.println(optFournisseur.get().getProduits());
+//		}
 
 //		System.out.println(produitRepository.findAll());
 //		System.out.println(produitRepository.findAll(Sort.by("prix").descending()));
