@@ -19,97 +19,103 @@ import javax.persistence.Table;
 @Table(name = "produit")
 @SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 public class Produit {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProduit")
-    private Integer id;
-    @Column(name = "nom", length = 100, nullable = false)
-    private String nom;
-    @Column(name = "prix")
-    private double prix;
-    @ManyToOne
-    @JoinColumn(name = "id_fournisseur", foreignKey = @ForeignKey(name = "produit_id_fournisseur_fk"))
-    private Fournisseur fournisseur;
-    @OneToMany(mappedBy = "key.produit")
-    private List<LigneCommande> lignesCommandes = new ArrayList<>();
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProduit")
+	private Integer id;
+	@Column(name = "nom", length = 100, nullable = false)
+	private String nom;
+	@Column(name = "prix")
+	private double prix;
+	@ManyToOne
+	@JoinColumn(name = "id_fournisseur", foreignKey = @ForeignKey(name = "produit_id_fournisseur_fk"))
+	private Fournisseur fournisseur;
+	@OneToMany(mappedBy = "key.produit")
+	private List<LigneCommande> lignesCommandes = new ArrayList<>();
 
-    public Produit() {
+	public Produit() {
 
-    }
+	}
 
-    public Produit(String nom, double prix) {
-	this.nom = nom;
-	this.prix = prix;
-    }
+	public Produit(String nom, double prix) {
+		this.nom = nom;
+		this.prix = prix;
+	}
 
-    public Integer getId() {
-	return id;
-    }
+	public Produit(String nom, double prix, Fournisseur fournisseur) {
+		this.nom = nom;
+		this.prix = prix;
+		this.fournisseur = fournisseur;
+	}
 
-    public void setId(Integer id) {
-	this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getNom() {
-	return nom;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setNom(String nom) {
-	this.nom = nom;
-    }
+	public String getNom() {
+		return nom;
+	}
 
-    public double getPrix() {
-	return prix;
-    }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-    public void setPrix(double prix) {
-	this.prix = prix;
-    }
+	public double getPrix() {
+		return prix;
+	}
 
-    public Fournisseur getFournisseur() {
-	return fournisseur;
-    }
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
 
-    public void setFournisseur(Fournisseur fournisseur) {
-	this.fournisseur = fournisseur;
-    }
+	public Fournisseur getFournisseur() {
+		return fournisseur;
+	}
 
-    public List<LigneCommande> getLignesCommandes() {
-	return lignesCommandes;
-    }
+	public void setFournisseur(Fournisseur fournisseur) {
+		this.fournisseur = fournisseur;
+	}
 
-    public void setLignesCommandes(List<LigneCommande> lignesCommandes) {
-	this.lignesCommandes = lignesCommandes;
-    }
+	public List<LigneCommande> getLignesCommandes() {
+		return lignesCommandes;
+	}
 
-    @Override
-    public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((id == null) ? 0 : id.hashCode());
-	return result;
-    }
+	public void setLignesCommandes(List<LigneCommande> lignesCommandes) {
+		this.lignesCommandes = lignesCommandes;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-	if (this == obj)
-	    return true;
-	if (obj == null)
-	    return false;
-	if (getClass() != obj.getClass())
-	    return false;
-	Produit other = (Produit) obj;
-	if (id == null) {
-	    if (other.id != null)
-		return false;
-	} else if (!id.equals(other.id))
-	    return false;
-	return true;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 
-    @Override
-    public String toString() {
-	return "Produit [id=" + id + ", nom=" + nom + ", prix=" + prix + "]";
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produit other = (Produit) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Produit [id=" + id + ", nom=" + nom + ", prix=" + prix + "]";
+	}
 
 }
