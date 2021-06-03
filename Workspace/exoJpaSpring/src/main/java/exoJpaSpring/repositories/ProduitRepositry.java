@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import exoJpaSpring.entity.Fournisseur;
 import exoJpaSpring.entity.Produit;
 
 public interface ProduitRepositry extends JpaRepository<Produit, Integer> {
@@ -33,5 +34,10 @@ public interface ProduitRepositry extends JpaRepository<Produit, Integer> {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	@Query("delete from Produit p where p.fournisseur is null")
 	int deleteProduitSansFournisseur();
+
+	@Modifying
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	@Query("update Produit p set p.fournisseur=null where p.fournisseur=:fournisseur")
+	int setFournisseurNull(@Param("fournisseur") Fournisseur fournisseur);
 
 }

@@ -1,30 +1,9 @@
 package exoJpaSpring;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
-import exoJpaSpring.dao.DaoCommande;
-import exoJpaSpring.dao.DaoLigneCommande;
-import exoJpaSpring.dao.DaoPersonne;
-import exoJpaSpring.dao.DaoProduit;
-import exoJpaSpring.entity.Client;
-import exoJpaSpring.entity.Commande;
-import exoJpaSpring.entity.Fournisseur;
-import exoJpaSpring.entity.LigneCommande;
-import exoJpaSpring.entity.LigneCommandeKey;
 import exoJpaSpring.entity.Produit;
 import exoJpaSpring.exceptions.ProduitException;
-import exoJpaSpring.repositories.FournisseurRepository;
-import exoJpaSpring.repositories.ProduitRepositry;
 import exoJpaSpring.services.ProduitService;
 
 public class AppSpring {
