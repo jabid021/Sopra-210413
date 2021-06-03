@@ -1,4 +1,4 @@
-package dao;
+package exoJpaSpring.dao;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package entity;
+package exoJpaSpring.entity;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;

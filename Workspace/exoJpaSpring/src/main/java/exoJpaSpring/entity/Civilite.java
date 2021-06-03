@@ -1,4 +1,4 @@
-package entity;
+package exoJpaSpring.entity;
 
 public enum Civilite {
     M("monsieur"), MME("madame"), MLLE("mademoiselle");

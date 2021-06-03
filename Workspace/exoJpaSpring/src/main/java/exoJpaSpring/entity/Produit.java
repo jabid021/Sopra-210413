@@ -1,4 +1,4 @@
-package entity;
+package exoJpaSpring.entity;
 
 import java.util.ArrayList;
 import java.util.List;

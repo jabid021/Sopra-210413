@@ -1,6 +1,6 @@
-package dao;
+package exoJpaSpring.dao;
 
-import entity.Produit;
+import exoJpaSpring.entity.Produit;
 
 public interface DaoProduit extends DaoGeneric<Produit, Integer> {
 

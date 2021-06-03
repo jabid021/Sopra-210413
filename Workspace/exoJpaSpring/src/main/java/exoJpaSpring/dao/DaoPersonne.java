@@ -1,10 +1,10 @@
-package dao;
+package exoJpaSpring.dao;
 
 import java.util.List;
 
-import entity.Client;
-import entity.Fournisseur;
-import entity.Personne;
+import exoJpaSpring.entity.Client;
+import exoJpaSpring.entity.Fournisseur;
+import exoJpaSpring.entity.Personne;
 
 public interface DaoPersonne extends DaoGeneric<Personne, Integer> {
     List<Client> findAllClient();

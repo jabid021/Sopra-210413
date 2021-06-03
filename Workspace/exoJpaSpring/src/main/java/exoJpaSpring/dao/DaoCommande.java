@@ -1,6 +1,6 @@
-package dao;
+package exoJpaSpring.dao;
 
-import entity.Commande;
+import exoJpaSpring.entity.Commande;
 
 public interface DaoCommande extends DaoGeneric<Commande, Integer> {
 
