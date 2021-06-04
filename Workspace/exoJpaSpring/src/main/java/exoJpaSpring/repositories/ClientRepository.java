@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import exoJpaSpring.entity.Client;
 
 public interface ClientRepository extends JpaRepository<Client, Integer> {
-	@Query("select c from Client c left join fetch commandes where c.id=:id")
+	@Query("select c from Client c left join fetch c.commandes where c.id=:id")
 	Optional<Client> findByIdWithCommandes(@Param("id") Integer id);
 }
