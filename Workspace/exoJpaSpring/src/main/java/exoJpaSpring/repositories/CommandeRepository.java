@@ -19,7 +19,7 @@ public interface CommandeRepository extends JpaRepository<Commande, Integer> {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	int deleteByClient(@Param("client") Client client);
 
-	@Query("select c from Commande c left join fetch c.lignesCommandes where c.id=:id")
+	@Query("select c from Commande c left join fetch c.lignesCommandes where c.numero=:id")
 	Optional<Commande> findByIdWithLigneCommande(@Param("id") Integer id);
 
 	@Query("select c from Commande c left join fetch c.lignesCommandes")

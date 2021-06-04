@@ -32,14 +32,13 @@ public class CommandeService {
 			}
 		}
 		commandeRepository.save(commande);
-		//commande.getLignesCommandes().stream().forEach(lc->{ligneCommandeRepository.save(lc);});
+		// commande.getLignesCommandes().stream().forEach(lc->{ligneCommandeRepository.save(lc);});
 		commande.getLignesCommandes().stream().forEach(ligneCommandeRepository::save);
 		return commande;
 	}
 
 	public void delete(Commande commande) {
-		ligneCommandeRepository.deleteByCommande(commande);
-		commandeRepository.delete(commande);
+		delete(commande.getNumero());
 	}
 
 	public void delete(Client client) {
@@ -52,7 +51,8 @@ public class CommandeService {
 		if (id != null) {
 			Optional<Commande> opt = commandeRepository.findById(id);
 			if (opt.isPresent()) {
-				delete(opt.get());
+				ligneCommandeRepository.deleteByCommande(opt.get());
+				commandeRepository.delete(opt.get());
 			}
 		}
 	}
