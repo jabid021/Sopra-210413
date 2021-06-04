@@ -17,27 +17,27 @@ public class AppSpring {
 	private ProduitService produitService;
 
 	public void run(String[] args) {
-		Produit produit = new Produit();
-
-		try {
-			produitService.save(produit);
-		} catch (ProduitException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			produitService.save(new Produit("aaa", 200));
-		} catch (ProduitException e) {
-			e.printStackTrace();
-		}
-		System.out.println(produitService.getAllProduits());
-
-		try {
-			System.out.println(produitService.getById(100));
-		} catch (ProduitException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Produit produit = new Produit();
+//
+//		try {
+//			produitService.save(produit);
+//		} catch (ProduitException e) {
+//			e.printStackTrace();
+//		}
+//
+//		try {
+//			produitService.save(new Produit("aaa", 200));
+//		} catch (ProduitException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(produitService.getAllProduits());
+//
+//		try {
+//			System.out.println(produitService.getById(100));
+//		} catch (ProduitException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 //		produit = produitRepository.save(produit);
 //

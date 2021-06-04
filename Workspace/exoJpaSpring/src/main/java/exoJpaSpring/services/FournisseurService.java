@@ -43,7 +43,7 @@ public class FournisseurService {
 		}
 	}
 
-	public List<Fournisseur> getAllClient() {
+	public List<Fournisseur> getAll() {
 		return fournisseurRepository.findAll();
 	}
 

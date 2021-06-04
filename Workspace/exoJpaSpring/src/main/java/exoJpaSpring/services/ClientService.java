@@ -16,7 +16,7 @@ public class ClientService {
 	@Autowired
 	private ClientRepository clientRepository;
 	@Autowired
-	private CommandeRepository commandeRepository;
+	private CommandeService commandeService;
 
 	public Client save(Client client) throws ClientException {
 		if (client.getNom() == null || client.getNom().isEmpty()) {
@@ -27,7 +27,7 @@ public class ClientService {
 
 	public void delete(Client client) {
 		if (client != null) {
-			commandeRepository.deleteByClient(client);
+			commandeService.delete(client);
 			clientRepository.delete(client);
 		}
 	}
@@ -41,7 +41,7 @@ public class ClientService {
 		}
 	}
 
-	public List<Client> getAllClient() {
+	public List<Client> getAll() {
 		return clientRepository.findAll();
 	}
 
@@ -54,6 +54,16 @@ public class ClientService {
 		}
 		return new Client();
 
+	}
+
+	public Client getByIdWithCommandes(Integer id) {
+		if (id != null) {
+			Optional<Client> opt = clientRepository.findByIdWithCommandes(id);
+			if (opt.isPresent()) {
+				return opt.get();
+			}
+		}
+		return new Client();
 	}
 
 }
