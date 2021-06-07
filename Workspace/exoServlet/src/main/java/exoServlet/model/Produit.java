@@ -3,9 +3,9 @@ package exoServlet.model;
 public class Produit {
 	private String nom;
 	private int prix;
-	
+
 	public Produit() {
-		
+
 	}
 
 	public Produit(String nom, int prix) {
@@ -56,7 +56,9 @@ public class Produit {
 			return false;
 		return true;
 	}
-	
-	
-	
+
+	public String getInfos() {
+		return nom + " " + prix;
+	}
+
 }
