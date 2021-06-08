@@ -1,6 +1,7 @@
 package exoJpaSpring.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -39,5 +40,8 @@ public interface ProduitRepositry extends JpaRepository<Produit, Integer> {
 	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
 	@Query("update Produit p set p.fournisseur=null where p.fournisseur=:fournisseur")
 	int setFournisseurNull(@Param("fournisseur") Fournisseur fournisseur);
+
+	@Query("select p from Produit p left join fetch p.lignesCommandes where p.id=:id")
+	Optional<Produit> findByIdWithLigneCommande(@Param("id") Integer id);
 
 }

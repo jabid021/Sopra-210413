@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import exoJpaSpring.entity.Commande;
 import exoJpaSpring.entity.Produit;
 import exoJpaSpring.exceptions.FournisseurException;
 import exoJpaSpring.exceptions.ProduitException;
@@ -17,6 +18,8 @@ public class ProduitService {
 	private ProduitRepositry produitRepository;
 	@Autowired
 	private FournisseurService fournisseurService;
+	@Autowired
+	private CommandeService commandeService;
 
 	public Produit save(Produit produit) throws ProduitException, FournisseurException {
 		if (produit.getNom() == null || produit.getNom().isEmpty()) {
@@ -35,7 +38,15 @@ public class ProduitService {
 
 	public void delete(Integer id) {
 		if (id != null) {
-			produitRepository.deleteById(id);
+			Optional<Produit> opt = produitRepository.findByIdWithLigneCommande(id);
+			if (opt.isPresent()) {
+				Produit p = opt.get();
+				p.getLignesCommandes().stream().forEach(lc -> {
+					commandeService.delete(lc.getKey().getCommande());
+				});
+				produitRepository.deleteById(p.getId());
+			}
+
 		}
 	}
 
@@ -43,7 +54,7 @@ public class ProduitService {
 		produitRepository.deleteProduitSansFournisseur();
 	}
 
-	public List<Produit> getAllProduits() {
+	public List<Produit> getAll() {
 		return produitRepository.findAll();
 	}
 
