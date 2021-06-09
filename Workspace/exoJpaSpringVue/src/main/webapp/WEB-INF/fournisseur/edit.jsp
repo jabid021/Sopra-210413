@@ -41,7 +41,8 @@
 				</div>
 				<div class="form-group">
 					<label for="nom">nom:</label> <input id="nom" name="nom"
-						class="form-control" value="${fournisseur.nom}">
+						class="form-control" value="${fournisseur.nom}"
+						required="required">
 				</div>
 				<div class="form-group">
 					<label for="commentaire">commentaire:</label>
