@@ -29,7 +29,8 @@
 				<th>id</th>
 				<th>nom</th>
 				<th>prix</th>
-				<th></th>
+				<th>fournisseur</th>
+
 				<th></th>
 			</tr>
 			<c:forEach var="p" items="${produits}">
@@ -37,6 +38,7 @@
 					<td>${p.id}</td>
 					<td>${p.nom}</td>
 					<td>${p.prix}</td>
+					<td>${p.fournisseur.infos}</td>
 					<td><a href="edit?id=${p.id}" class="btn btn-primary">editer</a></td>
 					<td><a href="delete?id=${p.id}" class="btn btn-danger">supprimer</a></td>
 				</tr>

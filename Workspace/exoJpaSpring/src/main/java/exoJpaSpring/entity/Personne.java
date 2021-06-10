@@ -16,6 +16,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,8 +32,10 @@ public abstract class Personne {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPersonne")
 	private Integer id;
 	@Column(name = "first_name", length = 150)
+	@Size(min = 2, max = 150)
 	private String prenom;
 	@Column(name = "last_name", length = 150)
+	@Size(min = 2, max = 150)
 	private String nom;
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
@@ -44,8 +48,10 @@ public abstract class Personne {
 	@Column(name = "civility", length = 4)
 	private Civilite civilite;
 	@Column(name = "birthday")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
-	@Embedded
+	@Valid
+	@Embedded // renseigne
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "street_number")),
 			@AttributeOverride(name = "rue", column = @Column(name = "street", length = 150)),
 			@AttributeOverride(name = "codePostal", column = @Column(name = "zip_code", length = 30)),
@@ -65,6 +71,10 @@ public abstract class Personne {
 		this.prenom = prenom;
 		this.nom = nom;
 		this.commentaire = commentaire;
+	}
+
+	public String getInfos() {
+		return prenom + " " + nom;
 	}
 
 	public Integer getId() {

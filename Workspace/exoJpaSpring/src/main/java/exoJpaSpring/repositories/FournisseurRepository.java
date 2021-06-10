@@ -11,4 +11,6 @@ import exoJpaSpring.entity.Fournisseur;
 public interface FournisseurRepository extends JpaRepository<Fournisseur, Integer> {
 	@Query("select frs from Fournisseur frs left join fetch frs.produits where frs.id=:toto")
 	Optional<Fournisseur> findByIdWithProduits(@Param("toto") Integer id);
+
+	Optional<Fournisseur> findByContact(String contact);
 }

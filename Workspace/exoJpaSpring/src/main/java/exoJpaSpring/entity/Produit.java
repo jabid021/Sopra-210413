@@ -14,6 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import exoJpaSpring.validation.MultipleDix;
 
 @Entity
 @Table(name = "produit")
@@ -24,8 +29,12 @@ public class Produit {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProduit")
 	private Integer id;
 	@Column(name = "nom", length = 100, nullable = false)
+	@NotEmpty(message = "le nom ne peut pas etre vide")
+	@Size(min = 2)
 	private String nom;
 	@Column(name = "prix")
+	@Min(value = 1)
+	@MultipleDix
 	private double prix;
 	@ManyToOne
 	@JoinColumn(name = "id_fournisseur", foreignKey = @ForeignKey(name = "produit_id_fournisseur_fk"))

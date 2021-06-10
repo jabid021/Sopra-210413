@@ -19,12 +19,14 @@
 				<th>id:</th>
 				<th>nom:</th>
 				<th>prix:</th>
+				<th>fournisseur:</th>
 			</tr>
 			<c:forEach var="produit" items="${produits}">
 				<tr>
 					<td>${produit.id}</td>
 					<td>${produit.nom}</td>
 					<td>${produit.prix}</td>
+					<td>${produit.fournisseur.infos}</td>
 					<td><a href="produit?q=edit&id=${produit.id}"
 						class="btn btn-outline-primary">editer</a></td>
 					<td><a href="produit?q=delete&id=${produit.id}"

@@ -58,4 +58,14 @@ public class FournisseurService {
 
 	}
 
+	public Fournisseur getByContact(String contact) {
+		if (contact != null) {
+			Optional<Fournisseur> opt = fournisseurRepository.findByContact(contact);
+			if (opt.isPresent()) {
+				return opt.get();
+			}
+		}
+		return new Fournisseur();
+	}
+
 }

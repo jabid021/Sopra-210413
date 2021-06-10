@@ -15,7 +15,7 @@
 <body>
 	<div class="container">
 		<h1>edition produit</h1>
-		<form:form action="save" method="post" modelAttribute="produit">
+		<form:form action="save" method="get" modelAttribute="produit">
 			<div class="form-group">
 				<form:label path="id">id</form:label>
 				<form:input path="id" cssClass="form-control" readonly="true"
@@ -24,10 +24,24 @@
 			<div class="form-group">
 				<form:label path="nom">nom</form:label>
 				<form:input path="nom" cssClass="form-control" />
+				<form:errors path="nom" cssClass="alert alert-danger" element="div">
+
+				</form:errors>
 			</div>
 			<div class="form-group">
 				<form:label path="prix">prix</form:label>
-				<form:input type="number" path="prix" cssClass="form-control" />
+				<form:input type="number" path="prix" cssClass="form-control"
+					step="0.1" />
+				<form:errors path="prix" cssClass="alert alert-danger" element="div"></form:errors>
+			</div>
+			<div class="form-group">
+				<form:label path="fournisseur">fournisseur</form:label>
+				<form:select path="fournisseur.id" cssClass="form-control">
+					<form:option value="">pas de fournisseur</form:option>
+					<form:options items="${fournisseurs}" itemValue="id"
+						itemLabel="infos" />
+				</form:select>
+				<form:errors path="fournisseur"></form:errors>
 			</div>
 			<div>
 				<button type="submit" class="btn btn-primary">enregister</button>
