@@ -12,6 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
 	crossorigin="anonymous">
+
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
 	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -24,34 +25,19 @@
 <body>
 	<jsp:include page="../menu.jsp"></jsp:include>
 	<div class="container">
-		<h1>listes des fournisseurs</h1>
-		<table class="table">
-			<tr>
-				<th>id</th>
-				<th>prenom</th>
-				<th>nom</th>
-				<th>contact</th>
-				<th>date de naissance</th>
-				<th>adresse</th>
-				<th></th>
-				<th></th>
-			</tr>
-			<c:forEach var="f" items="${fournisseurs}">
-				<tr>
-					<td>${f.id}</td>
-					<td>${f.prenom}</td>
-					<td>${f.nom}</td>
-					<td>${f.contact}</td>
-					<td><fmt:parseDate value="${f.dateNaissance}"
-							pattern="yyyy-MM-dd" var="javaUtilDate"></fmt:parseDate> <fmt:formatDate
-							value="${javaUtilDate}" pattern="dd/MM/yyyy" /></td>
-					<td>${f.adresse.numero}&nbsp;${f.adresse.rue}<br>${f.adresse.codePostal}&nbsp;${f.adresse.ville}
-					</td>
-					<td><a href="edit?id=${f.id}" class="btn btn-primary">editer</a></td>
-					<td><a href="delete?id=${f.id}" class="btn btn-danger">supprier</a></td>
+		<h1>detail d'une commande</h1>
+		<p>commande numero ${commande.numero}</p>
+
+		<dl>
+			<dt>Client:</dt>
+			<dd>${commande.client.infos}</dd>
+
+			<dt>Produits:</dt>
+			<c:forEach var="lc" items="${commande.lignesCommandes}">
+				<dd>produit:${lc.key.produit.nom}, quantité:${lc.quantite}</dd>
 			</c:forEach>
-		</table>
-		<a href="add" class="btn btn-link">ajout</a>
+		</dl>
+		<a href="../history?id=${commande.client.id}" class="btn btn-link">retour</a>
 	</div>
 </body>
 </html>

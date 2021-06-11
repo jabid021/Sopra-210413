@@ -33,7 +33,9 @@ public class CommandeService {
 		}
 		commandeRepository.save(commande);
 		// commande.getLignesCommandes().stream().forEach(lc->{ligneCommandeRepository.save(lc);});
-		commande.getLignesCommandes().stream().forEach(ligneCommandeRepository::save);
+		if (commande.getLignesCommandes() != null) {
+			commande.getLignesCommandes().stream().forEach(ligneCommandeRepository::save);
+		}
 		return commande;
 	}
 

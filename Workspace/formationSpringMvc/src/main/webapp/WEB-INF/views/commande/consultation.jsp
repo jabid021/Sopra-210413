@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,35 +22,32 @@
 </head>
 <body>
 	<jsp:include page="../menu.jsp"></jsp:include>
-	<div class="container">
-		<h1>listes des fournisseurs</h1>
+	<div class=container>
+		<h1>votre panier</h1>
 		<table class="table">
 			<tr>
-				<th>id</th>
-				<th>prenom</th>
-				<th>nom</th>
-				<th>contact</th>
-				<th>date de naissance</th>
-				<th>adresse</th>
+				<th>produit</th>
+				<th>prix unitaire</th>
+				<th>quantite</th>
+				<th>total</th>
 				<th></th>
-				<th></th>
-			</tr>
-			<c:forEach var="f" items="${fournisseurs}">
-				<tr>
-					<td>${f.id}</td>
-					<td>${f.prenom}</td>
-					<td>${f.nom}</td>
-					<td>${f.contact}</td>
-					<td><fmt:parseDate value="${f.dateNaissance}"
-							pattern="yyyy-MM-dd" var="javaUtilDate"></fmt:parseDate> <fmt:formatDate
-							value="${javaUtilDate}" pattern="dd/MM/yyyy" /></td>
-					<td>${f.adresse.numero}&nbsp;${f.adresse.rue}<br>${f.adresse.codePostal}&nbsp;${f.adresse.ville}
-					</td>
-					<td><a href="edit?id=${f.id}" class="btn btn-primary">editer</a></td>
-					<td><a href="delete?id=${f.id}" class="btn btn-danger">supprier</a></td>
-			</c:forEach>
+				<c:set var="total" value="0"></c:set>
+				<c:forEach var="produit" items="${panier.keySet()}">
+					<tr>
+						<td>${produit.nom}</td>
+						<td>${produit.prix}</td>
+						<td>${panier.get(produit)}</td>
+						<td>${produit.prix * panier.get(produit) }€</td>
+						<td><a href="remove?id=${produit.id}" class="btn btn-danger">retirer
+								du panier</a></td>
+					</tr>
+					<c:set var="total"
+						value="${total + produit.prix * panier.get(produit)}"></c:set>
+				</c:forEach>
 		</table>
-		<a href="add" class="btn btn-link">ajout</a>
+		<div>prix total du panier:${total}€</div>
+		<a href="panier" class="btn btn-link">retour à la liste des
+			produit</a> <a href="valid" class="btn btn-link">valider la commande</a><a href="cancel" class="btn btn-outline-danger">annuler la commande</a>
 	</div>
 </body>
 </html>

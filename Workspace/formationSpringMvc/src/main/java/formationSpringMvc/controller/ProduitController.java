@@ -27,6 +27,11 @@ public class ProduitController {
 	@Autowired
 	private FournisseurService fournisseurService;
 
+	@GetMapping({ "", "/" })
+	public String home() {
+		return "redirect:/produit/list";
+	}
+
 	@GetMapping("/list")
 	public String list(Model model) {
 		// getAll()=>mettre dans le modele

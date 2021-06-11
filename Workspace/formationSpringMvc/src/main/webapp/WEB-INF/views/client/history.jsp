@@ -24,34 +24,25 @@
 <body>
 	<jsp:include page="../menu.jsp"></jsp:include>
 	<div class="container">
-		<h1>listes des fournisseurs</h1>
+		<h1>historique des commandes de ${client.civilite.titre}
+			${client.prenom} ${client.nom}</h1>
 		<table class="table">
 			<tr>
-				<th>id</th>
-				<th>prenom</th>
-				<th>nom</th>
-				<th>contact</th>
-				<th>date de naissance</th>
-				<th>adresse</th>
-				<th></th>
+				<th>numero</th>
+				<th>date</th>
 				<th></th>
 			</tr>
-			<c:forEach var="f" items="${fournisseurs}">
+			<c:forEach var="commande" items="${client.commandes}">
 				<tr>
-					<td>${f.id}</td>
-					<td>${f.prenom}</td>
-					<td>${f.nom}</td>
-					<td>${f.contact}</td>
-					<td><fmt:parseDate value="${f.dateNaissance}"
+					<td>${commande.numero}</td>
+					<td><fmt:parseDate value="${commande.date}"
 							pattern="yyyy-MM-dd" var="javaUtilDate"></fmt:parseDate> <fmt:formatDate
 							value="${javaUtilDate}" pattern="dd/MM/yyyy" /></td>
-					<td>${f.adresse.numero}&nbsp;${f.adresse.rue}<br>${f.adresse.codePostal}&nbsp;${f.adresse.ville}
-					</td>
-					<td><a href="edit?id=${f.id}" class="btn btn-primary">editer</a></td>
-					<td><a href="delete?id=${f.id}" class="btn btn-danger">supprier</a></td>
+					<td><a href="history/details?numero=${commande.numero}"
+						class="btn btn-link">details</a></td>
 			</c:forEach>
 		</table>
-		<a href="add" class="btn btn-link">ajout</a>
+		<a href="list" class="btn btn-link">retour</a>
 	</div>
 </body>
 </html>

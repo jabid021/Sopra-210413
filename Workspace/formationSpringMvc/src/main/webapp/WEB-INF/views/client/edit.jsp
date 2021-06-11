@@ -9,22 +9,14 @@
 	rel="stylesheet"
 	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
 	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
-	integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
-	crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<jsp:include page="../menu.jsp"></jsp:include>
 	<div class="container">
-		<h1>edition de fournisseur</h1>
-		<form:form action="save" method="post" modelAttribute="fournisseur">
+		<h1>edition de client</h1>
+		<form:form action="save" method="post" modelAttribute="client">
 			<div class="form-group">
 				<form:label path="id">id:</form:label>
 				<form:input path="id" readonly="true" cssClass="form-control" />
@@ -33,7 +25,6 @@
 				<form:label path="civilite">civilite</form:label>
 				<form:select path="civilite" cssClass="form-control"
 					items="${civilites}" itemLabel="titre">
-					<%-- 					<form:options items="${civilites}"  itemLabel="titre"/> --%>
 				</form:select>
 			</div>
 
@@ -46,11 +37,6 @@
 				<form:label path="nom">prenom:</form:label>
 				<form:input path="nom" cssClass="form-control" />
 				<form:errors path="nom"></form:errors>
-			</div>
-			<div class="form-group">
-				<form:label path="contact">contact:</form:label>
-				<form:input type="email" path="contact" cssClass="form-control" />
-				<form:errors path="contact"></form:errors>
 			</div>
 			<div class="form-group">
 				<form:label path="dateNaissance">date naissance:</form:label>

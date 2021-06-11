@@ -12,6 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
 	crossorigin="anonymous">
+
 <script
 	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
 	integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -24,31 +25,32 @@
 <body>
 	<jsp:include page="../menu.jsp"></jsp:include>
 	<div class="container">
-		<h1>listes des fournisseurs</h1>
+		<h1>listes des clients</h1>
 		<table class="table">
 			<tr>
 				<th>id</th>
 				<th>prenom</th>
 				<th>nom</th>
-				<th>contact</th>
 				<th>date de naissance</th>
 				<th>adresse</th>
 				<th></th>
 				<th></th>
+				<th></th>
 			</tr>
-			<c:forEach var="f" items="${fournisseurs}">
+			<c:forEach var="c" items="${clients}">
 				<tr>
-					<td>${f.id}</td>
-					<td>${f.prenom}</td>
-					<td>${f.nom}</td>
-					<td>${f.contact}</td>
-					<td><fmt:parseDate value="${f.dateNaissance}"
+					<td>${c.id}</td>
+					<td>${c.prenom}</td>
+					<td>${c.nom}</td>
+					<td><fmt:parseDate value="${c.dateNaissance}"
 							pattern="yyyy-MM-dd" var="javaUtilDate"></fmt:parseDate> <fmt:formatDate
 							value="${javaUtilDate}" pattern="dd/MM/yyyy" /></td>
-					<td>${f.adresse.numero}&nbsp;${f.adresse.rue}<br>${f.adresse.codePostal}&nbsp;${f.adresse.ville}
+					<td>${c.adresse.numero}&nbsp;${c.adresse.rue}<br>${c.adresse.codePostal}&nbsp;${c.adresse.ville}
 					</td>
-					<td><a href="edit?id=${f.id}" class="btn btn-primary">editer</a></td>
-					<td><a href="delete?id=${f.id}" class="btn btn-danger">supprier</a></td>
+					<td><a href="edit?id=${c.id}" class="btn btn-primary">editer</a></td>
+					<td><a href="history?id=${c.id}" class="btn btn-info">historique
+							des commandes</a></td>
+					<td><a href="delete?id=${c.id}" class="btn btn-danger">supprier</a></td>
 			</c:forEach>
 		</table>
 		<a href="add" class="btn btn-link">ajout</a>
