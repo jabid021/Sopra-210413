@@ -20,6 +20,7 @@
 					class="nav-link">gestion des fournisseurs </a></li>
 				<li class="nav-item"><a href="${ctx}/commande/panier"
 					class="nav-link"> commander des produits </a></li>
+				<li><jsp:include page="./logout.jsp"></jsp:include></li>
 			</ul>
 		</div>
 	</div>
