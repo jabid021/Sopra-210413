@@ -1,4 +1,4 @@
-package formationSpringMvc.controller;
+package formation.sopra.springBoot.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,17 +16,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import exoJpaSpring.entity.Client;
-import exoJpaSpring.entity.Commande;
-import exoJpaSpring.entity.LigneCommande;
-import exoJpaSpring.entity.LigneCommandeKey;
-import exoJpaSpring.entity.Produit;
-import exoJpaSpring.exceptions.ClientException;
-import exoJpaSpring.exceptions.CommandeException;
-import exoJpaSpring.exceptions.ProduitException;
-import exoJpaSpring.services.ClientService;
-import exoJpaSpring.services.CommandeService;
-import exoJpaSpring.services.ProduitService;
+import formation.sopra.springBoot.entities.Client;
+import formation.sopra.springBoot.entities.Commande;
+import formation.sopra.springBoot.entities.LigneCommande;
+import formation.sopra.springBoot.entities.LigneCommandeKey;
+import formation.sopra.springBoot.entities.Produit;
+import formation.sopra.springBoot.exceptions.ProduitException;
+import formation.sopra.springBoot.services.ClientService;
+import formation.sopra.springBoot.services.CommandeService;
+import formation.sopra.springBoot.services.ProduitService;
 
 @Controller
 @RequestMapping("/commande")
@@ -53,10 +51,7 @@ public class CommandeController {
 		Map<Produit, Integer> panier = (Map<Produit, Integer>) session.getAttribute("panier");
 		List<LigneCommande> lignes = new ArrayList<LigneCommande>();
 		panier.keySet().stream().forEach(produit -> {
-			lignes.add(
-					new LigneCommande(
-							new LigneCommandeKey(produit, commande), 
-							panier.get(produit)));
+			lignes.add(new LigneCommande(new LigneCommandeKey(produit, commande), panier.get(produit)));
 		});
 		commande.setLignesCommandes(lignes);
 		try {
