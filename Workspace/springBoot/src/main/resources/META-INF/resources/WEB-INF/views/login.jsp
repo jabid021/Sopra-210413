@@ -26,6 +26,7 @@
 	<jsp:include page="./menu.jsp"></jsp:include>
 	<div class="container">
 		<h1>identification</h1>
+		<a href="" class="btn btn-link">inscription</a>
 		<c:if test="${param.error != null }">
 			<div class="alert alert-danger">erreur d'authentification</div>
 		</c:if>

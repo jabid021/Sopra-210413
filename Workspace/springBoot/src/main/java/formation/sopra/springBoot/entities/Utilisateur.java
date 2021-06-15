@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -23,6 +24,8 @@ public class Utilisateur {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role", length = 50)
 	private Role role;
+	@OneToOne(mappedBy = "utilisateur")
+	private Client client;
 
 	public Utilisateur() {
 
@@ -58,6 +61,14 @@ public class Utilisateur {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	@Override
