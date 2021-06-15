@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @SequenceGenerator(name = "seqUtilisateur", sequenceName = "seq_utilisateur", initialValue = 100, allocationSize = 1)
@@ -17,8 +19,10 @@ public class Utilisateur {
 	@GeneratedValue(generator = "seqUtilisateur", strategy = GenerationType.SEQUENCE)
 	private Integer id;
 	@Column(name = "login", nullable = false, unique = true, length = 200)
+	@NotEmpty
 	private String login;
 	@Column(name = "password", nullable = false, length = 200)
+	//@Pattern()
 	private String password;
 	// les utilisateurs ont 1 role
 	@Enumerated(EnumType.STRING)

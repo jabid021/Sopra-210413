@@ -67,6 +67,17 @@
 				<form:input path="adresse.ville" cssClass="form-control" />
 				<form:errors path="adresse.ville"></form:errors>
 			</div>
+			<form:hidden path="utilisateur.id" />
+			<div class="form-group">
+				<form:label path="utilisateur.login">identifiant:</form:label>
+				<form:input path="utilisateur.login" cssClass="form-control" />
+				<form:errors path="utilisateur.login"></form:errors>
+			</div>
+			<div class="form-group">
+				<form:label path="utilisateur.password">mot de passe:</form:label>
+				<form:input path="utilisateur.password" cssClass="form-control" />
+				<form:errors path="utilisateur"></form:errors>
+			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">enregistrer</button>
 				<a href="list" class="btn btn-warning">annuler</a>

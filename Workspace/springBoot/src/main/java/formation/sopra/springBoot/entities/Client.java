@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 @Entity
 @Table(name = "customer")
@@ -16,6 +17,7 @@ public class Client extends Personne {
 	private List<Commande> commandes;
 	@OneToOne
 	@JoinColumn(name = "user_id")
+	@Valid
 	private Utilisateur utilisateur;
 
 	public Client() {
