@@ -22,8 +22,18 @@
 					<li class="nav-item"><a href="${ctx}/fournisseur"
 						class="nav-link">gestion des fournisseurs </a></li>
 				</sec:authorize>
-				<li class="nav-item"><a href="${ctx}/commande/panier"
-					class="nav-link"> commander des produits </a></li>
+				<sec:authorize access="!hasRole('ROLE_ADMIN')">
+					<li class="nav-item"><a href="${ctx}/commande/panier"
+						class="nav-link"> commander des produits </a></li>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<li class="nav-item"><a href="${ctx}/client/histo"
+						class="nav-link"> historique de vos commandes </a></li>
+				</sec:authorize>
+				<sec:authorize access="isAnonymous()">
+					<li class="nav-item"><a href="${ctx}/login" class="nav-link">
+							connexion </a></li>
+				</sec:authorize>
 				<li><jsp:include page="./logout.jsp"></jsp:include></li>
 			</ul>
 		</div>

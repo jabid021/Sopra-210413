@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<c:set var="ctx" value="${pageContext.servletContext.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,29 +22,11 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<jsp:include page="../menu.jsp"></jsp:include>
 	<div class="container">
-		<h1>historique des commandes de ${client.civilite.titre}
-			${client.prenom} ${client.nom}</h1>
-		<table class="table">
-			<tr>
-				<th>numero</th>
-				<th>date</th>
-				<th></th>
-			</tr>
-			<c:forEach var="commande" items="${client.commandes}">
-				<tr>
-					<td>${commande.numero}</td>
-					<td><fmt:parseDate value="${commande.date}"
-							pattern="yyyy-MM-dd" var="javaUtilDate"></fmt:parseDate> <fmt:formatDate
-							value="${javaUtilDate}" pattern="dd/MM/yyyy" /></td>
-					<td><a href="histo/details?numero=${commande.numero}"
-						class="btn btn-link">details</a></td>
-			</c:forEach>
-		</table>
-		<sec:authorize access="hasRole('ROLE_ADMIN')">
-			<a href="list" class="btn btn-link">retour</a>
-		</sec:authorize>
+		<h1>
+			Tout cassé on sait pas pourquoi? c'est par <a href="${ctx}"
+				class="btn btn-link">la</a>
+		</h1>
 	</div>
 </body>
 </html>

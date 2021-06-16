@@ -5,6 +5,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import formation.sopra.springBoot.config.UtilisateurSpring;
 import formation.sopra.springBoot.entities.Civilite;
 import formation.sopra.springBoot.entities.Client;
 import formation.sopra.springBoot.entities.Utilisateur;
@@ -121,12 +124,23 @@ public class ClientController {
 	}
 
 	@GetMapping("/history")
+	@PreAuthorize("hasRole('ADMIN')")
 	public String historique(@RequestParam Integer id, Model model) {
+		return goHistory(id, model);
+	}
+
+	private String goHistory(Integer id, Model model) {
 		model.addAttribute("client", clientService.getByIdWithCommandes(id));
 		return "client/history";
 	}
 
-	@GetMapping("/history/details")
+	@GetMapping("/histo")
+	@PreAuthorize("hasRole('USER')")
+	public String historiqueClient(Model model, @AuthenticationPrincipal UtilisateurSpring utilisateurSpring) {
+		return goHistory(utilisateurSpring.getUtilisateur().getClient().getId(), model);
+	}
+
+	@GetMapping("/histo/details")
 	public String detailsCommande(@RequestParam Integer numero, Model model) {
 		try {
 			model.addAttribute("commande", commandeService.getById(numero));
