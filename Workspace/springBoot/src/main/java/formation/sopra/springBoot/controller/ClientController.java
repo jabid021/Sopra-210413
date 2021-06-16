@@ -74,16 +74,10 @@ public class ClientController {
 
 	@PostMapping("/save")
 	public String save(@ModelAttribute("client") @Valid Client client, BindingResult br, Model model) {
-		// verifie login du client actuel en base
-
-		// si idem=>ok
-
-		// si different control login dispo
 		Client clientEnbase = null;
 		if (client.getId() != null) {
 			clientEnbase = clientService.getById(client.getId());
 			if (!clientEnbase.getUtilisateur().getLogin().equals(client.getUtilisateur().getLogin())) {
-				// control login dispo
 				if (loginDispo(client.getUtilisateur().getLogin())) {
 					br.addError(new FieldError("client", "utilisateur.login", "identifiant deja utilisé"));
 				}
