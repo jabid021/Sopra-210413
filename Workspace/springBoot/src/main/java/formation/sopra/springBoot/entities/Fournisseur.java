@@ -9,13 +9,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.springBoot.entities.views.Views;
+
 @Entity
 @Table(name = "provider")
 //@DiscriminatorValue("FR")
 public class Fournisseur extends Personne {
 	@OneToMany(mappedBy = "fournisseur", fetch = FetchType.LAZY)
+	@JsonView(Views.FournisseurWithProduits.class)
+	// @JsonIgnoreProperties("fournisseur")
 	List<Produit> produits;
 	// Set<Produit>
+	@JsonView(Views.Common.class)
 	@Column(name = "contact", length = 100)
 	@Email
 	// @EmailUnique

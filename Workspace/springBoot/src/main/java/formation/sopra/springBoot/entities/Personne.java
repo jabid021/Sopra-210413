@@ -22,21 +22,29 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.springBoot.entities.views.Views;
+
 @Entity
 //@Table(name = "person")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING,length=2)
 @SequenceGenerator(name = "seqPersonne", sequenceName = "seq_person", initialValue = 100, allocationSize = 1)
 public abstract class Personne {
+	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPersonne")
 	private Integer id;
 	@Column(name = "first_name", length = 150)
 	@Size(min = 2, max = 150)
+	@JsonView(Views.Common.class)
 	private String prenom;
+	@JsonView(Views.Common.class)
 	@Column(name = "last_name", length = 150)
 	@Size(min = 2, max = 150)
 	private String nom;
+	@JsonView(Views.Common.class)
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
 	@Column(name = "comment")
@@ -44,12 +52,15 @@ public abstract class Personne {
 	@Lob
 	@Column(name = "picture")
 	private byte[] photo;
+	@JsonView(Views.Common.class)
 	@Enumerated(EnumType.STRING)
 	@Column(name = "civility", length = 4)
 	private Civilite civilite;
+	@JsonView(Views.Common.class)
 	@Column(name = "birthday")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
+	@JsonView(Views.Common.class)
 	@Valid
 	@Embedded // renseigne
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "street_number")),

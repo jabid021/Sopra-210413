@@ -4,18 +4,25 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.sun.istack.NotNull;
+
+import formation.sopra.springBoot.entities.views.Views;
 
 @Embeddable
 public class Adresse {
+	@JsonView(Views.Common.class)
 	@NotNull
 	private Integer numero;
+	@JsonView(Views.Common.class)
 	@Column(name = "rue", length = 200)
 	@NotEmpty
 	private String rue;
+	@JsonView(Views.Common.class)
 	@Column(name = "code_postal", length = 20)
 	@NotEmpty
 	private String codePostal;
+	@JsonView(Views.Common.class)
 	@Column(name = "ville", length = 150)
 	@NotEmpty
 	private String ville;

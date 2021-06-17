@@ -18,27 +18,37 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.springBoot.entities.views.Views;
 import formation.sopra.springBoot.validations.MultipleDix;
 
 @Entity
 @Table(name = "produit")
 @SequenceGenerator(name = "seqProduit", sequenceName = "seq_produit", initialValue = 100, allocationSize = 1)
 public class Produit {
+	@JsonView(Views.Common.class)
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProduit")
 	private Integer id;
+	@JsonView(Views.Common.class)
 	@Column(name = "nom", length = 100, nullable = false)
 	@NotEmpty(message = "le nom ne peut pas etre vide")
 	@Size(min = 2)
 	private String nom;
+	@JsonView(Views.Common.class)
 	@Column(name = "prix")
 	@Min(value = 1)
 	@MultipleDix
 	private double prix;
+	// @JsonIgnore
+	@JsonView(Views.ProduitWithFournisseur.class)
 	@ManyToOne
 	@JoinColumn(name = "id_fournisseur", foreignKey = @ForeignKey(name = "produit_id_fournisseur_fk"))
 	private Fournisseur fournisseur;
+	@JsonIgnore
 	@OneToMany(mappedBy = "key.produit")
 	private List<LigneCommande> lignesCommandes = new ArrayList<>();
 

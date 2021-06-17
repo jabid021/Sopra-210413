@@ -28,8 +28,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
-		http.
-			antMatcher("/**")
+		http
+			.antMatcher("/api/**")
+				.csrf().ignoringAntMatchers("/api","/api/**")
+				.and()
+				.authorizeRequests().
+					antMatchers("/api","/api/**").permitAll()
+			.and()		
+			.antMatcher("/**")
 				.authorizeRequests()
 					.antMatchers("/","/commande/**","/client/inscription","/client/save").permitAll()
 					.antMatchers("/client/histo","/client/histo/details").authenticated()
