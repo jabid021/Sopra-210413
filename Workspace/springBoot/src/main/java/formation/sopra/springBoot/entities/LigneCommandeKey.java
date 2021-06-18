@@ -7,9 +7,14 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.springBoot.entities.views.Views;
+
 @Embeddable
 public class LigneCommandeKey implements Serializable{
-    @ManyToOne
+	@JsonView(Views.CommandeWithLigneCommande.class)
+	@ManyToOne
     @JoinColumn(name = "lc_produit_id",foreignKey=@ForeignKey(name="ligne_commande_produit_id_fk"))
     private Produit produit;
     @ManyToOne

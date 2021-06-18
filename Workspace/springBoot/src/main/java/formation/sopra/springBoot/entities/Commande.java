@@ -15,18 +15,26 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.springBoot.entities.views.Views;
+
 @Entity
 @Table(name = "commande")
 @SequenceGenerator(name = "seqCommande", sequenceName = "seq_commande", initialValue = 100, allocationSize = 1)
 public class Commande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCommande")
+	@JsonView(Views.Common.class)
 	private Integer numero;
 	@Column(name = "date_commande")
+	@JsonView(Views.Common.class)
 	private LocalDate date;
+	@JsonView(Views.Commande.class)
 	@ManyToOne
 	@JoinColumn(name = "id_client", foreignKey = @ForeignKey(name = "commande_id_client_fk"), nullable = false)
 	private Client client;
+	@JsonView({ Views.CommandeWithLigneCommande.class, Views.ClientWithCommande.class })
 	@OneToMany(mappedBy = "key.commande")
 	private List<LigneCommande> lignesCommandes;
 

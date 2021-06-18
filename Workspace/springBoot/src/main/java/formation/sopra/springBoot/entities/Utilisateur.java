@@ -12,17 +12,22 @@ import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.springBoot.entities.views.Views;
+
 @Entity
 @SequenceGenerator(name = "seqUtilisateur", sequenceName = "seq_utilisateur", initialValue = 100, allocationSize = 1)
 public class Utilisateur {
 	@Id
 	@GeneratedValue(generator = "seqUtilisateur", strategy = GenerationType.SEQUENCE)
 	private Integer id;
+	@JsonView(Views.Common.class)
 	@Column(name = "login", nullable = false, unique = true, length = 200)
 	@NotEmpty
 	private String login;
 	@Column(name = "password", nullable = false, length = 200)
-	//@Pattern()
+	// @Pattern()
 	private String password;
 	// les utilisateurs ont 1 role
 	@Enumerated(EnumType.STRING)

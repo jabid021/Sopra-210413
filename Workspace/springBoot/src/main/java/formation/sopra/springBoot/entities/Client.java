@@ -9,15 +9,21 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.sopra.springBoot.entities.views.Views;
+
 @Entity
 @Table(name = "customer")
 //@DiscriminatorValue("CL")
 public class Client extends Personne {
+	@JsonView(Views.ClientWithCommande.class)
 	@OneToMany(mappedBy = "client")
 	private List<Commande> commandes;
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	@Valid
+	@JsonView(Views.Common.class)
 	private Utilisateur utilisateur;
 
 	public Client() {

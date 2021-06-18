@@ -12,4 +12,16 @@ public class Views {
 	public static class FournisseurWithProduits extends Common {
 
 	}
+
+	public static class ClientWithCommande extends Common {
+
+	}
+
+	public static class Commande extends Common {
+
+	}
+
+	public static class CommandeWithLigneCommande extends Commande {
+
+	}
 }

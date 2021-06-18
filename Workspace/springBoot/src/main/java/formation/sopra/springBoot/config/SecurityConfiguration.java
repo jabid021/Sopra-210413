@@ -3,6 +3,7 @@ package formation.sopra.springBoot.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,6 +34,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.csrf().ignoringAntMatchers("/api","/api/**")
 				.and()
 				.authorizeRequests()
+					.antMatchers("/api/fournisseur","/api/fournisseur/**").hasRole("ADMIN")
+					.antMatchers(HttpMethod.POST,"/api/commande").hasRole("USER")
+					.antMatchers("/api/commande","/api/commande/**").authenticated()
+					.antMatchers(HttpMethod.POST,"/api/client").hasRole("USER")
+					.antMatchers(HttpMethod.POST,"/api/produit").hasRole("ADMIN")
+					.antMatchers(HttpMethod.PUT,"/api/produit/**").hasRole("ADMIN")
+					.antMatchers(HttpMethod.DELETE,"/api/produit/**").hasRole("ADMIN")
 					.antMatchers("/api","/api/**").authenticated()
 				.and()
 				.httpBasic()
