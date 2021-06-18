@@ -22,7 +22,7 @@ public interface CommandeRepository extends JpaRepository<Commande, Integer> {
 	@Query("select c from Commande c left join fetch c.lignesCommandes where c.numero=:id")
 	Optional<Commande> findByIdWithLigneCommande(@Param("id") Integer id);
 
-	@Query("select c from Commande c left join fetch c.lignesCommandes")
+	@Query("select distinct c from Commande c left join fetch c.lignesCommandes")
 	List<Commande> findAllWithLigneCommande();
 
 	List<Commande> findByClient(Client client);

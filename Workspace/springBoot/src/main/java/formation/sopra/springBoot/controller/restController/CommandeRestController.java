@@ -40,12 +40,14 @@ public class CommandeRestController {
 	@Autowired
 	private ProduitService produitService;
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping("")
 	@JsonView(Views.Commande.class)
 	public List<Commande> getAllCommande() {
 		return getAll();
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping("/full")
 	@JsonView(Views.CommandeWithLigneCommande.class)
 	public List<Commande> getAllCommandeWithLigneCommande() {
