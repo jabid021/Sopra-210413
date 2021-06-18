@@ -1,5 +1,7 @@
 package formation.sopra.springBoot.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +14,8 @@ import formation.sopra.springBoot.repositories.UtilisateurRepository;
 @Service
 public class ConsoleService implements CommandLineRunner {
 
+	Logger logger = LoggerFactory.getLogger(ConsoleService.class);
+
 	@Autowired
 	private UtilisateurRepository utilisateurRepo;
 	@Autowired
@@ -19,7 +23,22 @@ public class ConsoleService implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//initUtilisateur();
+
+		logger.trace("Trace");
+		logger.debug("Debug");
+		logger.info("Info");
+		logger.warn("Warn");
+		logger.error("Error");
+
+		
+		
+//		try {
+//			String s = null;
+//			s.charAt(0);
+//		} catch (NullPointerException e) {
+//			logger.info(e.getMessage(), e);
+//		}
+		// initUtilisateur();
 	}
 
 	private void initUtilisateur() {

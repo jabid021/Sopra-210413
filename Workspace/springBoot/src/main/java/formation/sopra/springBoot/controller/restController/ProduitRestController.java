@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
@@ -34,6 +36,8 @@ import formation.sopra.springBoot.services.ProduitService;
 @RestController
 @RequestMapping("/api/produit")
 public class ProduitRestController {
+
+	private Logger logger = LoggerFactory.getLogger(ProduitRestController.class);
 
 	@Autowired
 	private ProduitService produitService;
@@ -103,15 +107,18 @@ public class ProduitRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.ProduitWithFournisseur.class)
 	public Produit update(@Valid @RequestBody Produit produit, BindingResult br, @PathVariable Integer id) {
+		logger.trace(br.toString());
 		if (br.hasErrors()) {
-			System.out.println("binding resut");
+			// System.out.println("binding resut");
+			logger.trace("binding result");
 			throw new ProduitInvalidException();
 		}
 		produit.setId(id);
 		try {
 			produit = produitService.save(produit);
 		} catch (Exception e) {
-			System.out.println("save");
+			// System.out.println("save");
+			logger.trace("save");
 			throw new ProduitInvalidException();
 		}
 		return produit;
