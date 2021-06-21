@@ -281,3 +281,8 @@
 2021-06-18 14:59:13.563  INFO 66119 --- [main] f.s.springBoot.services.ConsoleService   : Info
 2021-06-18 14:59:13.563  WARN 66119 --- [main] f.s.springBoot.services.ConsoleService   : Warn
 2021-06-18 14:59:13.563 ERROR 66119 --- [main] f.s.springBoot.services.ConsoleService   : Error
+2021-06-18 15:39:38.192  INFO 66119 --- [RMI TCP Connection(51)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2021-06-18 15:39:38.340  INFO 66119 --- [RMI TCP Connection(51)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-18 15:39:38.353  INFO 66119 --- [RMI TCP Connection(51)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-18 15:39:38.567  INFO 66119 --- [RMI TCP Connection(51)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-06-18 15:39:38.624  INFO 66119 --- [RMI TCP Connection(51)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

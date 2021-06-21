@@ -25,9 +25,4 @@ public class CustomErrorControl implements ErrorController {
 		return modelAndView;
 	}
 
-	@Override
-	public String getErrorPath() {
-		return "/error";
-	}
-
 }
