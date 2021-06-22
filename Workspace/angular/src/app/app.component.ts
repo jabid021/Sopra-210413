@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular';
-  unProduit: Produit = new Produit('tele', 100);
+  produit: Produit;
 
-  recuperationProduit(produitRecu: Produit) {
-    this.unProduit = produitRecu;
+  recuperationProduit(produit: Produit) {
+    this.produit = produit;
   }
 }

@@ -1,9 +1,11 @@
+<asc-bold-element
+  *ngIf="produit"
+  prefix="voici le nom"
+  [text]="produit.nom"
+></asc-bold-element>
 
-<app-output (produitCree)="recuperationProduit($event)"></app-output>
-<app-test [produit]="unProduit"></app-test>
+<asc-tooltip asc-tooltip-titre="le titre">un message</asc-tooltip>
 
-<div>
-  le produit dans app.component:{{ unProduit.nom }} {{ unProduit.prix }}
-</div>
-
-
+<app-saisir-produit
+  (produitPret)="recuperationProduit($event)"
+></app-saisir-produit>
