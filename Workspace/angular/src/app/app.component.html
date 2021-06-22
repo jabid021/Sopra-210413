@@ -1,1 +1,9 @@
-<app-produit></app-produit>
+
+<app-output (produitCree)="recuperationProduit($event)"></app-output>
+<app-test [produit]="unProduit"></app-test>
+
+<div>
+  le produit dans app.component:{{ unProduit.nom }} {{ unProduit.prix }}
+</div>
+
+
