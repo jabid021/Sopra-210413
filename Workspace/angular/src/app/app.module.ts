@@ -11,9 +11,10 @@ import { AscBoldComponent } from './asc-bold/asc-bold.component';
 import { AscBoldElementComponent } from './asc-bold-element/asc-bold-element.component';
 import { AscTooltipComponent } from './asc-tooltip/asc-tooltip.component';
 import { SaisirProduitComponent } from './saisir-produit/saisir-produit.component';
+import { AfficherProduitComponent } from './afficher-produit/afficher-produit.component';
 
 @NgModule({
-  declarations: [AppComponent, ProduitComponent, CouleurComponent, TestComponent, OutputComponent, AscBoldComponent, AscBoldElementComponent, AscTooltipComponent, SaisirProduitComponent],
+  declarations: [AppComponent, ProduitComponent, CouleurComponent, TestComponent, OutputComponent, AscBoldComponent, AscBoldElementComponent, AscTooltipComponent, SaisirProduitComponent, AfficherProduitComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

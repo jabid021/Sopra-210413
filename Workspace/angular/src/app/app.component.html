@@ -9,3 +9,8 @@
 <app-saisir-produit
   (produitPret)="recuperationProduit($event)"
 ></app-saisir-produit>
+
+<app-afficher-produit
+  *ngIf="produit"
+  [produit]="produit"
+></app-afficher-produit>
