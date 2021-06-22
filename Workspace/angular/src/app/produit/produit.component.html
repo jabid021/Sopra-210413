@@ -2,4 +2,16 @@
   nom:<input [(ngModel)]="produit.nom" /><br />
   prix:<input type="number" [(ngModel)]="produit.prix" />
 </div>
-<div>info saisie:{{ produit.nom }} {{ produit.prix }}</div>
+<div *ngIf="showProduit()" [ngClass]="{ rouge: produit.prix < 0 }">
+  info saisie:{{ produit.nom }} {{ produit.prix }}
+</div>
+
+<button (click)="methodeDuComponent()">mon bouton</button>
+<div>{{ message }}</div>
+
+<div [style.color]="couleur">une div en couleur</div>
+<div *ngIf="image === '/assets/img1.jpeg'">
+  <img [src]="image" alt="" />
+</div>
+<button (click)="loadImage('img1')">image1</button>
+<button (click)="loadImage('img2')">image2</button>

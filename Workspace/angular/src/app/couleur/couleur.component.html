@@ -1,0 +1,10 @@
+<div>couleur recu:{{ color }}</div>
+<div [style.color]="couleur">
+  <select [(ngModel)]="couleur">
+    <option value="#ffff00">jaune</option>
+    <option value="#ff0000">rouge</option>
+    <option value="#000000">noir</option>
+  </select>
+  <input type="color" [(ngModel)]="couleur" />
+  <p>du texte en couleur</p>
+</div>
