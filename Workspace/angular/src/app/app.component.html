@@ -1,16 +1,1 @@
-<asc-bold-element
-  *ngIf="produit"
-  prefix="voici le nom"
-  [text]="produit.nom"
-></asc-bold-element>
-
-<asc-tooltip asc-tooltip-titre="le titre">un message</asc-tooltip>
-
-<app-saisir-produit
-  (produitPret)="recuperationProduit($event)"
-></app-saisir-produit>
-
-<app-afficher-produit
-  *ngIf="produit"
-  [produit]="produit"
-></app-afficher-produit>
+<app-list-produit></app-list-produit>

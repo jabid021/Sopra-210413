@@ -1,0 +1,16 @@
+<table>
+  <tr *ngFor="let p of produits; let indice = index">
+    <td>{{ p.nom }}</td>
+    <td>{{ p.prix }}</td>
+    <td>{{ infos(indice) }}</td>
+  </tr>
+</table>
+
+<hr />
+<table>
+  <tr produit-tr [produit]="p" *ngFor="let p of produits"></tr>
+</table>
+
+<app-saisir-produit
+  (produitPret)="recuperationEtAjout($event)"
+></app-saisir-produit>

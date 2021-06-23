@@ -12,9 +12,12 @@ import { AscBoldElementComponent } from './asc-bold-element/asc-bold-element.com
 import { AscTooltipComponent } from './asc-tooltip/asc-tooltip.component';
 import { SaisirProduitComponent } from './saisir-produit/saisir-produit.component';
 import { AfficherProduitComponent } from './afficher-produit/afficher-produit.component';
+import { TestDirectiveComponent } from './test-directive/test-directive.component';
+import { AfficherProduitTableauComponent } from './afficher-produit-tableau/afficher-produit-tableau.component';
+import { ListProduitComponent } from './list-produit/list-produit.component';
 
 @NgModule({
-  declarations: [AppComponent, ProduitComponent, CouleurComponent, TestComponent, OutputComponent, AscBoldComponent, AscBoldElementComponent, AscTooltipComponent, SaisirProduitComponent, AfficherProduitComponent],
+  declarations: [AppComponent, ProduitComponent, CouleurComponent, TestComponent, OutputComponent, AscBoldComponent, AscBoldElementComponent, AscTooltipComponent, SaisirProduitComponent, AfficherProduitComponent, TestDirectiveComponent, AfficherProduitTableauComponent, ListProduitComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

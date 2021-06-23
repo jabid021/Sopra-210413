@@ -8,9 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AfficherProduitComponent implements OnInit {
   @Input()
-  produit: Produit = new Produit();
+  produit: Produit;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.produit) {
+      this.produit = new Produit();
+    }
+  }
 }
