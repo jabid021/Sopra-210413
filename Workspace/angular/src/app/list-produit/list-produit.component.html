@@ -1,7 +1,7 @@
 <table>
   <tr *ngFor="let p of produits; let indice = index">
-    <td>{{ p.nom }}</td>
-    <td>{{ p.prix }}</td>
+    <td appRouge couleur="yellow">{{ p.nom }}</td>
+    <td appRouge>{{ p.prix }}</td>
     <td>{{ infos(indice) }}</td>
   </tr>
 </table>

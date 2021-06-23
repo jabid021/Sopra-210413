@@ -15,9 +15,25 @@ import { AfficherProduitComponent } from './afficher-produit/afficher-produit.co
 import { TestDirectiveComponent } from './test-directive/test-directive.component';
 import { AfficherProduitTableauComponent } from './afficher-produit-tableau/afficher-produit-tableau.component';
 import { ListProduitComponent } from './list-produit/list-produit.component';
+import { RougeDirective } from './directives/rouge.directive';
 
 @NgModule({
-  declarations: [AppComponent, ProduitComponent, CouleurComponent, TestComponent, OutputComponent, AscBoldComponent, AscBoldElementComponent, AscTooltipComponent, SaisirProduitComponent, AfficherProduitComponent, TestDirectiveComponent, AfficherProduitTableauComponent, ListProduitComponent],
+  declarations: [
+    AppComponent,
+    ProduitComponent,
+    CouleurComponent,
+    TestComponent,
+    OutputComponent,
+    AscBoldComponent,
+    AscBoldElementComponent,
+    AscTooltipComponent,
+    SaisirProduitComponent,
+    AfficherProduitComponent,
+    TestDirectiveComponent,
+    AfficherProduitTableauComponent,
+    ListProduitComponent,
+    RougeDirective,
+  ],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
