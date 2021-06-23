@@ -21,6 +21,8 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
 import { TestParametreComponent } from './test-parametre/test-parametre.component';
 import { BonjourComponent } from './bonjour/bonjour.component';
+import { ListeProduitComponent } from './exoroute/liste-produit/liste-produit.component';
+import { DetailProduitComponent } from './exoroute/detail-produit/detail-produit.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { BonjourComponent } from './bonjour/bonjour.component';
     HomeComponent,
     TestParametreComponent,
     BonjourComponent,
+    ListeProduitComponent,
+    DetailProduitComponent,
   ],
   imports: [BrowserModule, FormsModule,RouterModule.forRoot(routes)],
   providers: [],

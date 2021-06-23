@@ -1,0 +1,25 @@
+<table class="table">
+  <tr *ngFor="let produit of produits; let index = index">
+    <td>{{ produit.nom }}</td>
+    <td>{{ produit.prix }}</td>
+    <td>
+      <a
+        [routerLink]="['/produits', 'detail', index]"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >edition</a
+      >
+    </td>
+    <td>
+      <button (click)="delete(index)" class="btn btn-outline-danger">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+<a
+  class="btn btn-link"
+  [routerLink]="['/produits', 'detail']"
+  routerLinkActive="active"
+  >ajouter</a
+>
