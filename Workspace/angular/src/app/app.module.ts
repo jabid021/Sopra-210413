@@ -1,3 +1,4 @@
+import { routes } from './routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -16,6 +17,8 @@ import { TestDirectiveComponent } from './test-directive/test-directive.componen
 import { AfficherProduitTableauComponent } from './afficher-produit-tableau/afficher-produit-tableau.component';
 import { ListProduitComponent } from './list-produit/list-produit.component';
 import { RougeDirective } from './directives/rouge.directive';
+import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -33,8 +36,9 @@ import { RougeDirective } from './directives/rouge.directive';
     AfficherProduitTableauComponent,
     ListProduitComponent,
     RougeDirective,
+    HomeComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule,RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
 })

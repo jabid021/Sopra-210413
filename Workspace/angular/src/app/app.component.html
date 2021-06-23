@@ -1,1 +1,7 @@
-<app-list-produit></app-list-produit>
+<nav>
+  <a [routerLink]="['/home']" routerLinkActive="active">home</a>
+  <a [routerLink]="['/produits']" routerLinkActive="active"
+    >la liste des produits</a
+  >
+</nav>
+<router-outlet></router-outlet>
