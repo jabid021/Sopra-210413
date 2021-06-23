@@ -1,3 +1,4 @@
+import { listeProduit } from './../produit';
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../model/produit';
 
@@ -7,10 +8,7 @@ import { Produit } from '../model/produit';
   styleUrls: ['./list-produit.component.css'],
 })
 export class ListProduitComponent implements OnInit {
-  produits: Produit[] = [
-    new Produit('tele', 500),
-    new Produit('avion', -999999),
-  ];
+  produits: Produit[] = listeProduit;
 
   constructor() {}
 

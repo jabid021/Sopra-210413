@@ -3,5 +3,13 @@
   <a [routerLink]="['/produits']" routerLinkActive="active"
     >la liste des produits</a
   >
+  <a [routerLink]="['/bonjour']" routerLinkActive="active">bonjour</a>
+  <a
+    [routerLink]="['/param', 'olivier']"
+    [queryParams]="{ param1: 'une valeur', age: 20 }"
+    routerLinkActive="active"
+    >test parametre</a
+  >
+  <a [routerLink]="['/param']" routerLinkActive="active">test parametre</a>
 </nav>
 <router-outlet></router-outlet>

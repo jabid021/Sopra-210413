@@ -19,6 +19,8 @@ import { ListProduitComponent } from './list-produit/list-produit.component';
 import { RougeDirective } from './directives/rouge.directive';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
+import { TestParametreComponent } from './test-parametre/test-parametre.component';
+import { BonjourComponent } from './bonjour/bonjour.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { RouterModule } from '@angular/router';
     ListProduitComponent,
     RougeDirective,
     HomeComponent,
+    TestParametreComponent,
+    BonjourComponent,
   ],
   imports: [BrowserModule, FormsModule,RouterModule.forRoot(routes)],
   providers: [],
