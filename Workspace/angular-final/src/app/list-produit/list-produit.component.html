@@ -1,0 +1,31 @@
+<table class="table">
+  <tr>
+    <th>id:</th>
+    <th>nom:</th>
+    <th>prix:</th>
+  </tr>
+  <tr *ngFor="let produit of produits | async">
+    <td>{{ produit.id }}</td>
+    <td>{{ produit.nom }}</td>
+    <td>{{ produit.prix }}</td>
+    <td>
+      <a
+        [routerLink]="['/produits', 'edit', produit.id]"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >editer</a
+      >
+    </td>
+    <td>
+      <button class="btn btn-outline-danger" (click)="delete(produit.id)">
+        supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+<a
+  [routerLink]="['/produits', 'edit']"
+  routerLinkActive="active"
+  class="btn btn-link"
+  >ajouter produit</a
+>
