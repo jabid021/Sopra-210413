@@ -1,3 +1,4 @@
+import { ProduitLocalService } from './../../services/produit-local.service';
 import { listeProduit } from './../../produit';
 import { Produit } from './../../model/produit';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,22 +13,26 @@ export class DetailProduitComponent implements OnInit {
   produit: Produit = new Produit();
   index: number = -1;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(
+    private produitService: ProduitLocalService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params.index) {
         this.index = params.index;
-        this.produit = listeProduit[this.index];
+        this.produit = this.produitService.get(this.index);
       }
     });
   }
 
   save() {
     if (this.index === -1) {
-      listeProduit.push(this.produit);
+      this.produitService.add(this.produit);
     } else {
-      listeProduit[this.index] = this.produit;
+      this.produitService.update(this.produit, this.index);
     }
     this.produit = new Produit();
     this.router.navigate(['/produits']);

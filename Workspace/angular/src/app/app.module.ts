@@ -23,6 +23,9 @@ import { TestParametreComponent } from './test-parametre/test-parametre.componen
 import { BonjourComponent } from './bonjour/bonjour.component';
 import { ListeProduitComponent } from './exoroute/liste-produit/liste-produit.component';
 import { DetailProduitComponent } from './exoroute/detail-produit/detail-produit.component';
+import { Footer1Component } from './footer1/footer1.component';
+import { Footer2Component } from './footer2/footer2.component';
+import { TestPipe } from './pipe/test.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { DetailProduitComponent } from './exoroute/detail-produit/detail-produit
     BonjourComponent,
     ListeProduitComponent,
     DetailProduitComponent,
+    Footer1Component,
+    Footer2Component,
+    TestPipe,
   ],
   imports: [BrowserModule, FormsModule,RouterModule.forRoot(routes)],
   providers: [],

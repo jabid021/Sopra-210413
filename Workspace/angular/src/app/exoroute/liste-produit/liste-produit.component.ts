@@ -1,3 +1,4 @@
+import { ProduitLocalService } from './../../services/produit-local.service';
 import { listeProduit } from './../../produit';
 import { Component, OnInit } from '@angular/core';
 import { Produit } from 'src/app/model/produit';
@@ -8,13 +9,15 @@ import { Produit } from 'src/app/model/produit';
   styleUrls: ['./liste-produit.component.css'],
 })
 export class ListeProduitComponent implements OnInit {
-  produits: Produit[] = listeProduit;
+  produits: Produit[] = [];
 
-  constructor() {}
+  constructor(private produitService:ProduitLocalService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.produits=this.produitService.getAll();
+  }
 
   delete(index: number) {
-    this.produits.splice(index, 1);
+    this.produitService.delete(index);
   }
 }
