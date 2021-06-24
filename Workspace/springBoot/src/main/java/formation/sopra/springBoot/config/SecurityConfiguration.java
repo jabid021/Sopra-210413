@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -33,7 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatcher("/api/**")
 				.csrf().ignoringAntMatchers("/api","/api/**")
 				.and()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
 				.authorizeRequests()
+					.antMatchers(HttpMethod.OPTIONS).anonymous()
 					.antMatchers("/api/fournisseur","/api/fournisseur/**").hasRole("ADMIN")
 					.antMatchers(HttpMethod.POST,"/api/commande").hasRole("USER")
 					.antMatchers("/api/commande","/api/commande/**").authenticated()
