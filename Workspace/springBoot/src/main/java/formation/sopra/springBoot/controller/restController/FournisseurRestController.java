@@ -38,6 +38,13 @@ import formation.sopra.springBoot.services.FournisseurService;
 public class FournisseurRestController {
 	@Autowired
 	private FournisseurService fournisseurService;
+	
+	@GetMapping("/contact/{contact}")
+	@JsonView(Views.Common.class)
+	public Fournisseur getByContact(@PathVariable String contact) {
+		Fournisseur fournisseur=fournisseurService.getByContact(contact);
+		return fournisseur;
+	}
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -132,4 +139,5 @@ public class FournisseurRestController {
 		return frsEnBase;
 	}
 
+	
 }

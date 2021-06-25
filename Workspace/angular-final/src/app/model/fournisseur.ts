@@ -1,8 +1,6 @@
 import { Adresse } from './adresse';
 import { Civilite } from './civilite';
 export class Fournisseur {
-  private _dateNaissance: Date = new Date();
-
   constructor(
     private _id: number | any = null,
     private _prenom: string = '',
@@ -10,7 +8,8 @@ export class Fournisseur {
     private _commentaire: string = '',
     private _civilite: Civilite = Civilite.M,
     private _contact: string = '',
-    private _adresse: Adresse = new Adresse()
+    private _adresse: Adresse = new Adresse(),
+    private _dateNaissance: Date = new Date()
   ) {}
 
   public get dateNaissance(): Date {

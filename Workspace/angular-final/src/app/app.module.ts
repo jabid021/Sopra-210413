@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListFournisseurComponent } from './fournisseur/list-fournisseur/list-fournisseur.component';
 import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
 import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire
     ListFournisseurComponent,
     EditFournisseurComponent,
     FormulaireCodeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

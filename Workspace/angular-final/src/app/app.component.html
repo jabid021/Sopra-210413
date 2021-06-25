@@ -2,15 +2,30 @@
   <a [routerLink]="['/home']" routerLinkActive="active" class="btn btn-link"
     >home</a
   >
-  <a [routerLink]="['/produits']" routerLinkActive="active" class="btn btn-link"
+  <a
+    *ngIf="isLogged()"
+    [routerLink]="['/produits']"
+    routerLinkActive="active"
+    class="btn btn-link"
     >produits</a
   >
   <a
+    *ngIf="isLogged()"
     [routerLink]="['/fournisseurs']"
     routerLinkActive="active"
     class="btn btn-link"
     >fournisseurs</a
   >
+  <a
+    *ngIf="!isLogged()"
+    [routerLink]="['/login']"
+    routerLinkActive="active"
+    class="btn btn-link"
+    >login</a
+  >
+  <button *ngIf="isLogged()" (click)="logoff()" class="btn btn-link">
+    deconnection
+  </button>
 </nav>
-<app-formulaire-code></app-formulaire-code>
+
 <router-outlet></router-outlet>

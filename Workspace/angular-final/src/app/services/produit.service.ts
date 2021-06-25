@@ -13,9 +13,10 @@ export class ProduitService {
   constructor(private http: HttpClient) {}
 
   private initHeader() {
+    const auth = localStorage.getItem('auth');
     this.httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + btoa('admin:admin123'),
+      Authorization: auth ? auth : '',
     });
   }
 
@@ -42,9 +43,9 @@ export class ProduitService {
 
   public create(produit: Produit): Observable<Produit> {
     this.initHeader();
-    const produitFormate={
-      nom:produit.nom,
-      prix:produit.prix
+    const produitFormate = {
+      nom: produit.nom,
+      prix: produit.prix,
     };
 
     return this.http.post<Produit>(ProduitService.URL, produitFormate, {

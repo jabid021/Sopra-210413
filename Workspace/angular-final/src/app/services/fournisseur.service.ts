@@ -2,6 +2,7 @@ import { Fournisseur } from './../model/fournisseur';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { getLocaleTimeFormat } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +15,10 @@ export class FournisseurService {
   constructor(private http: HttpClient) {}
 
   private initHeader() {
+    const auth=localStorage.getItem('auth');
     this.httpHeader = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + btoa('admin:admin123'),
+      Authorization: auth?auth:'',
     });
   }
 
@@ -42,9 +44,23 @@ export class FournisseurService {
   }
   public update(fournisseur: Fournisseur): Observable<Fournisseur> {
     this.initHeader();
+    const f = {
+      prenom: fournisseur.prenom,
+      nom: fournisseur.nom,
+      civilite: fournisseur.civilite,
+      dateNaissance: fournisseur.dateNaissance,
+      commentaire: fournisseur.commentaire,
+      adresse: {
+        numero: fournisseur.adresse.numero,
+        rue: fournisseur.adresse.rue,
+        codePostal: fournisseur.adresse.codePostal,
+        ville: fournisseur.adresse.ville,
+      },
+      contact: fournisseur.contact,
+    };
     return this.http.put<Fournisseur>(
       `${FournisseurService.URL}/${fournisseur.id}`,
-      fournisseur,
+      f,
       {
         headers: this.httpHeader,
       }
@@ -71,5 +87,13 @@ export class FournisseurService {
     return this.http.post<Fournisseur>(FournisseurService.URL, f, {
       headers: this.httpHeader,
     });
+  }
+
+  public checkMail(contact: string): Observable<Fournisseur> {
+    this.initHeader();
+    return this.http.get<Fournisseur>(
+      `${FournisseurService.URL}/contact/${contact}`,
+      { headers: this.httpHeader }
+    );
   }
 }

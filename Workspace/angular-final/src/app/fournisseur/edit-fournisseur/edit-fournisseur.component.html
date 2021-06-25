@@ -1,22 +1,18 @@
 <div>
-  <form (ngSubmit)="save()">
+  <form (ngSubmit)="save()" [formGroup]="form">
     <div class="form-group">
       <label>id:</label>
       <input
         class="form-control"
-        [(ngModel)]="fournisseur.id"
         name="id"
+        [formControl]="idCtrl"
         readonly
         placeholder="generation automatique"
       />
     </div>
     <div class="form-control">
       <label>civilite</label>
-      <select
-        [(ngModel)]="fournisseur.civilite"
-        class="form-control"
-        name="civilite"
-      >
+      <select class="form-control" name="civilite" [formControl]="civiliteCtrl">
         <option value="M">monsieur</option>
         <option value="MLLE">mademoiselle</option>
         <option value="MME">madame</option>
@@ -24,32 +20,27 @@
     </div>
     <div class="form-group">
       <label>prenom:</label>
-      <input
-        class="form-control"
-        [(ngModel)]="fournisseur.prenom"
-        required
-        name="prenom"
-      />
+      <input class="form-control" name="prenom" [formControl]="prenomCtrl" />
     </div>
     <div class="form-group">
       <label>nom:</label>
-      <input class="form-control" [(ngModel)]="fournisseur.nom" name="nom" />
+      <input class="form-control" name="nom" [formControl]="nomCtrl" />
     </div>
     <div class="form-group">
       <label>date de naissance:</label>
       <input
         type="date"
         class="form-control"
-        [(ngModel)]="fournisseur.dateNaissance"
         name="dateNaissance"
+        [formControl]="dateNaissanceCtrl"
       />
     </div>
     <div class="form-group">
       <label>commentaire:</label>
       <textarea
         class="form-control"
-        [(ngModel)]="fournisseur.commentaire"
         name="commentaire"
+        [formControl]="commentaireCtrl"
       ></textarea>
     </div>
     <div class="form-group">
@@ -57,44 +48,49 @@
       <input
         type="email"
         class="form-control"
-        [(ngModel)]="fournisseur.contact"
         name="contact"
+        [formControl]="contactCtrl"
       />
+      <div
+        class="alert alert-danger"
+        *ngIf="contactCtrl.dirty && contactCtrl.hasError('mailExist')"
+      >
+        mail deja pris
+      </div>
     </div>
     <div class="form-group">
       <label>numero:</label>
       <input
         type="number"
         class="form-control"
-        [(ngModel)]="fournisseur.adresse.numero"
-        [ngModelOptions]="{ standalone: true }"
+        name="numero"
+        [formControl]="numeroCtrl"
       />
     </div>
     <div class="form-group">
       <label>rue:</label>
-      <input
-        class="form-control"
-        [ngModelOptions]="{ standalone: true }"
-        [(ngModel)]="fournisseur.adresse.rue"
-      />
+      <input class="form-control" name="rue" [formControl]="rueCtrl" />
     </div>
     <div class="form-group">
       <label>code postal:</label>
       <input
         class="form-control"
-        [ngModelOptions]="{ standalone: true }"
-        [(ngModel)]="fournisseur.adresse.codePostal"
+        name="codePostal"
+        [formControl]="codePostalCtrl"
       />
     </div>
     <div class="form-group">
       <label>ville:</label>
-      <input
-        class="form-control"
-        
-      />
+      <input class="form-control" name="ville" [formControl]="villeCtrl" />
     </div>
     <div>
-      <button type="submit" class="btn btn-outline-success">enregistrer</button>
+      <button
+        type="submit"
+        class="btn btn-outline-success"
+        [disabled]="form.invalid"
+      >
+        enregistrer
+      </button>
       <a
         [routerLink]="['/fournisseurs']"
         routerLinkActive="active"
