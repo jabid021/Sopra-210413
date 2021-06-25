@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { EditProduitComponent } from './edit-produit/edit-produit.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ListFournisseurComponent } from './fournisseur/list-fournisseur/list-fournisseur.component';
+import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
+import { FormulaireTemplateComponent } from './formulaire/formulaire-template/formulaire-template.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { FormsModule } from '@angular/forms';
     ListProduitComponent,
     HomeComponent,
     EditProduitComponent,
+    ListFournisseurComponent,
+    EditFournisseurComponent,
+    FormulaireTemplateComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+<form (ngSubmit)="submit(monForm)" #monForm="ngForm">
+  <div class="form-group">
+    <label>prenom</label>
+    <input
+      class="form-control"
+      [(ngModel)]="prenom"
+      name="p"
+      required
+      
+      #prenomInput="ngModel"
+    />
+    <div *ngIf="prenomInput.pristine">prenom obligatoire</div>
+    <div
+      *ngIf="prenomInput.dirty && prenomInput.invalid"
+      class="alert alert-danger"
+    >
+      prenom obligatoire
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>nom</label>
+    <input class="form-control" [(ngModel)]="nom" name="nom" />
+  </div>
+  <div>
+    <button type="submit" [disabled]="monForm.invalid">envoyer</button>
+  </div>
+</form>

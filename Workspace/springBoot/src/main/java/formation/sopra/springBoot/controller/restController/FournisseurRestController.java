@@ -58,7 +58,7 @@ public class FournisseurRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping("")
 	@JsonView(Views.Common.class)
-	public Fournisseur create(Fournisseur fournisseur, BindingResult br) {
+	public Fournisseur create(@Valid @RequestBody Fournisseur fournisseur, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new FournisseurInvalidException();
 		}
