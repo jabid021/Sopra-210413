@@ -1,0 +1,41 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+  <div class="form-group">
+    <label>prenom</label>
+    <input name="prenom" class="form-control" [formControl]="prenomCtrl" />
+  </div>
+
+  <div class="form-group">
+    <label>nom</label>
+    <input class="form-control" [formControl]="nomCtrl" />
+    <div *ngIf="nomCtrl.dirty && nomCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="nomCtrl.hasError('required')">nom obligatoire</span>
+      <span *ngIf="nomCtrl.hasError('minlength')">minimum 2 caracteres</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>prix</label>
+    <input class="form-control" [formControl]="prixCtrl" />
+    <div *ngIf="prixCtrl.dirty && prixCtrl.invalid" class="alert alert-danger">
+      <span *ngIf="prixCtrl.hasError('required')">prix obligatoire</span>
+      <span *ngIf="prixCtrl.hasError('modulo10')">pas de multiple de 10</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>password</label>
+    <input name="password" class="form-control" [formControl]="passwordCtrl" />
+    <div
+      *ngIf="passwordCtrl.dirty && passwordCtrl.invalid"
+      class="alert alert-danger"
+    >
+      3 caracteres minimums
+    </div>
+  </div>
+  <div class="form-group">
+    <label>confirmation</label>
+    <input name="confirm" class="form-control" [formControl]="confirmCtrl" />
+    <div *ngIf="passwordGroup.invalid" class="alert alert-danger">pas egal</div>
+  </div>
+  <div>
+    <button type="submit" [disabled]="form.invalid">envoyer</button>
+  </div>
+</form>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormulaireTemplateComponent } from './formulaire-template.component';
+import { FormulaireCodeComponent } from './formulaire-code.component';
 
-describe('FormulaireTemplateComponent', () => {
-  let component: FormulaireTemplateComponent;
-  let fixture: ComponentFixture<FormulaireTemplateComponent>;
+describe('FormulaireCodeComponent', () => {
+  let component: FormulaireCodeComponent;
+  let fixture: ComponentFixture<FormulaireCodeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormulaireTemplateComponent ]
+      declarations: [ FormulaireCodeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormulaireTemplateComponent);
+    fixture = TestBed.createComponent(FormulaireCodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -7,10 +7,10 @@ import { ListProduitComponent } from './list-produit/list-produit.component';
 import { HomeComponent } from './home/home.component';
 import { EditProduitComponent } from './edit-produit/edit-produit.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListFournisseurComponent } from './fournisseur/list-fournisseur/list-fournisseur.component';
 import { EditFournisseurComponent } from './fournisseur/edit-fournisseur/edit-fournisseur.component';
-import { FormulaireTemplateComponent } from './formulaire/formulaire-template/formulaire-template.component';
+import { FormulaireCodeComponent } from './formulaire/formulaire-code/formulaire-code.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +20,12 @@ import { FormulaireTemplateComponent } from './formulaire/formulaire-template/fo
     EditProduitComponent,
     ListFournisseurComponent,
     EditFournisseurComponent,
-    FormulaireTemplateComponent,
+    FormulaireCodeComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],

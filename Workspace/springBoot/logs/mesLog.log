@@ -250,3 +250,5 @@
 2021-06-25 11:10:27.209  INFO 58724 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/boot]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-06-25 11:10:27.217  INFO 58724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-06-25 11:10:27.221  INFO 58724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2021-06-25 13:40:19.666  WARN 58724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h11m27s502ms).
+2021-06-25 13:56:38.154  WARN 58724 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m48s276ms).
